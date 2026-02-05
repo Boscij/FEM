@@ -13,26 +13,16 @@ Sebastian
 
 ### Notebook 0: Warm-up
 Python-Grundlagen und Jupyter-Workflow, damit du dich später auf die Mechanik konzentrieren kannst.
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=00_Jupyter_Python.ipynb)  
 
-**JupyterLite**
-[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=00_JupyterPython.ipynb)  
-[JupyterLite öffnen](https://Boscij.github.io/FEM/lab/index.html?path=00_JupyterPython.ipynb)  
-
-**Google Colab**
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/00_JupyterPython.ipynb)  
-[In Colab öffnen](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/00_JupyterPython.ipynb)  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/00_Jupyter_Python.ipynb)  
 
 ### Notebook 1: Matrixsteifigkeitsmethode
 Von lokaler Elementsteifigkeit über Transformation bis zur globalen Strukturmatrix und zu den Verschiebungen/Kräften.
 
-**JupyterLite**
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=01_Matrixsteifigkeitsmethode.ipynb)  
-[JupyterLite öffnen](https://Boscij.github.io/FEM/lab/index.html?path=01_Matrixsteifigkeitsmethode.ipynb)  
 
-**Google Colab**
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/01_Matrixsteifigkeitsmethode.ipynb)  
-[In Colab öffnen](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/01_Matrixsteifigkeitsmethode.ipynb)  
-
 ---
 
 ## So benutzt du die Notebooks

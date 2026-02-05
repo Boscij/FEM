@@ -3,10 +3,12 @@
 Dieses Repository enthält ein kurzes Einführungs-Notebook für Studierende des FEM-Kurses an der ZHAW.
 Es zeigt den grundlegenden Umgang mit Jupyter-Notebooks und wiederholt zentrale Python-Basics.
 
-Viel Spass damit! Sebastian Domaschke
+Viel Spass damit! Sebastian 
 
 **Notebooks**
+
 *Notebook 0 - Jupyter Notebook und Python Einführung*
+
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html)
 [JupyterLite öffnen](https://Boscij.github.io/FEM/lab/index.html)
 

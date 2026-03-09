@@ -117,6 +117,9 @@ _output
 
 # solutions
 *_loesung.ipynb
+exercises/ex_galerkin/ex_galerkin_solution.*
+exercises/ex_galerkin/plots_u.png
+exercises/ex_galerkin/plots_sigma.png
 
 # LaTeX build artifacts
 *.aux

@@ -45,9 +45,10 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\dd}{\,\mathrm{d}}
 \newcommand{\grad}{\nabla}
-\newcommand{\K}{\mathbf{K}}
+\newcommand{\K}{\underline{\underline{K}}}
 \newcommand{\fvec}{\mathbf{f}}
 \newcommand{\uvec}{\mathbf{u}}
+\newcommand{\mat}[1]{\underline{\underline{#1}}}
 
 \begin{document}
 
@@ -288,9 +289,9 @@ Block 1: Dienstag 14:00--15:35 Uhr; Block 2: Dienstag 16:00--17:35 Uhr
     \node[pre]    (p1) at (0,2.0) {Problem definieren (Geometrie, Material, Lasten)};
     \node[pre]    (p2) at (0,1.1) {Diskretisieren (Netz/Elemente)};
     \node[pre]    (p3) at (0,0.2) {Randbedingungen setzen (Lager, Kontakte)};
-    \node[wfstep] (p4) at (0,-0.7) {Elementsteifigkeitsmatrix $\mathbf{k}^e$ berechnen};
-    \node[wfstep] (p5) at (0,-1.6) {Global assemblieren $\mathbf{K}$ und $\mathbf{f}$};
-    \node[wfstep] (p6) at (0,-2.5) {Gleichungssystem lösen $\mathbf{K}\,\mathbf{u}=\mathbf{f}$};
+    \node[wfstep] (p4) at (0,-0.7) {Elementsteifigkeitsmatrix $\underline{\underline{k}}^e$ berechnen};
+    \node[wfstep] (p5) at (0,-1.6) {Global assemblieren $\underline{\underline{K}}$ und $\mathbf{f}$};
+    \node[wfstep] (p6) at (0,-2.5) {Gleichungssystem lösen $\underline{\underline{K}}\,\mathbf{u}=\mathbf{f}$};
 
     % Ein großer Pfeil rechts (oben nach unten)
     \draw[bigarrow] (3.8,2.25) -- (3.8,-2.95);

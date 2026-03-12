@@ -1,10 +1,8 @@
 # Finite-Elemente-Methode (FEM) mit Python
 
-Willkommen! In diesem Repository lernst du mittels verschiedener Notebooks die Finite-Elemente-Methode kennen, indem du sie Schritt für Schritt selbst zusammenbaust. 
+Willkommen! In diesem Repository lernst du mittels verschiedener Notebooks die Finite-Elemente-Methode kennen.
 
-Die Notebooks sind für Studierende in meinem FEM-Kurs an der ZHAW gedacht und bauen aufeinander auf. Du brauchst keine riesen Programmierkenntnisse. Du brauchst nur Neugier, ein bisschen Geduld und die Bereitschaft, ein paar Lücken (`...`) durch Formeln oder Informationen zu ersetzen.
-
-Viel Spass, 
+Viel Erfolg und viel Spass, 
 Sebastian
 
 ---

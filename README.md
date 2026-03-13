@@ -34,7 +34,7 @@ Von lokaler Elementsteifigkeit über Transformation bis zur globalen Strukturmat
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/02_Matrixsteifigkeitsmethode.ipynb)
 
 ### Notebook 3: Matrixsteifigkeitsmethode – Aufruf über Funktionen
-Gleiche Berechnung wie in Notebook 2, aber vollständig über die Funktionen aus `fem_core.py`, `fem_post.py` und `fem_pre.py` ausgeführt. Kein Lückentext – der Fokus liegt auf dem sauberen Zusammenspiel der Bibliotheksfunktionen.
+Gleiche Berechnung wie in Notebook 2, aber vollständig über Funktionen ausgeführt. Kein Lückentext – der Fokus liegt auf dem sauberen Zusammenspiel der Bibliotheksfunktionen.
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=03_Matrixsteifigkeitsmethode_Funktionen.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/03_Matrixsteifigkeitsmethode_Funktionen.ipynb)

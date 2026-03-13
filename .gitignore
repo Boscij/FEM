@@ -118,7 +118,10 @@ _output
 # solutions
 *_loesung.ipynb
 *_lsg.ipynb
-content/03_Preprocessing_Matrixsteifigkeitsmethode.ipynb
+content/03_Matrixsteifigkeitsmethode_Funktionen.ipynb
+
+# explicitly track fem_core
+!content/fem_core.py
 exercises/ex_galerkin/ex_galerkin_solution.*
 exercises/ex_galerkin/plots_u.png
 exercises/ex_galerkin/plots_sigma.png

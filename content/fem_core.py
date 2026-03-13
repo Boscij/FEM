@@ -89,3 +89,4 @@ def solve_system(K, constraints, loads):
     F[fixed] = K_UF @ U_free + K_UU @ U_prescribed
 
     return U, F, fixed
+

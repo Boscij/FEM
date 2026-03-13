@@ -32,6 +32,22 @@ Von lokaler Elementsteifigkeit über Transformation bis zur globalen Strukturmat
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=02_Matrixsteifigkeitsmethode.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/02_Matrixsteifigkeitsmethode.ipynb)
+
+### Notebook 3: Matrixsteifigkeitsmethode – Aufruf über Funktionen
+Gleiche Berechnung wie in Notebook 2, aber vollständig über die Funktionen aus `fem_core.py`, `fem_post.py` und `fem_pre.py` ausgeführt. Kein Lückentext – der Fokus liegt auf dem sauberen Zusammenspiel der Bibliotheksfunktionen.
+
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=03_Matrixsteifigkeitsmethode_Funktionen.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/03_Matrixsteifigkeitsmethode_Funktionen.ipynb)
+
+### Notebook 4: Matrixsteifigkeitsmethode – Komplettes Tool
+Einsatzbereites Berechnungs-Tool: Modelldaten eingeben, alle Funktionen aufrufen, Ergebnisse (Verschiebungen, Lagerkräfte, Dehnungen, Spannungen, Normalkräfte) und Visualisierung erhalten.
+
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=04_Matrixsteifigkeitsmethode.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/04_Matrixsteifigkeitsmethode.ipynb)
+
+### Notebook 5: Pre-Processing – Grafische Modelleingabe
+Interaktive GUI zur grafischen Eingabe eines ebenen Fachwerks (Knoten, Stäbe, Lager, Lasten). Der generierte Code kann direkt als Input in Notebook 4 verwendet werden. Der GUI-Code ist nicht Vorlesungsstoff – er ist in `fem_pre.py` einsehbar.
+
 ---
 
 ## So benutzt du die Notebooks

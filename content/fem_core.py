@@ -29,68 +29,6 @@ def incidence_table(elements):
     )).T
 
 
-def preprocessing(nodal_coordinates, elements, sections, materials):
-    """Assembliert SSM K und Differentialoperator D.
-
-    D @ U liefert die axialen Dehnungen aller Elemente (vektorisiert).
-    Inspiriert von: Weder, M. / ZHAW (2024).
-
-    Returns
-    -------
-    K : (ndof × ndof) Struktursteifigkeitsmatrix
-    D : (n_elem × ndof) Differentialoperator
-    """
-    dofs = incidence_table(elements)
-    ndof = int(np.max(dofs) + 1)
-    K    = np.zeros((ndof, ndof))
-    D    = np.zeros((len(elements), ndof))
-
-    for e, (i, j, sec_key) in enumerate(elements):
-        A_e, mat_key = sections[sec_key]
-        E_e  = materials[mat_key][0]
-        xy_e = nodal_coordinates[[i, j], :]
-
-        dx = xy_e[1, 0] - xy_e[0, 0]
-        dy = xy_e[1, 1] - xy_e[0, 1]
-        L  = np.sqrt(dx**2 + dy**2)
-        c  = dx / L;  s = dy / L
-
-        k_lokal = (E_e * A_e / L) * np.array([[1., -1.], [-1., 1.]])
-        T       = np.array([[c, s, 0., 0.], [0., 0., c, s]])
-        De      = (T[1, :] - T[0, :]) / L   # axialer Differentialoperator
-
-        idx = dofs[e]
-        K[np.ix_(idx, idx)] += T.T @ k_lokal @ T
-        D[np.ix_([e], idx)]  = De
-
-    return K, D
-
-
-def postprocessing(U, D, elements, sections, materials):
-    """Berechnet Dehnung ε, Spannung σ und Normalkraft N je Element.
-
-    Parameters
-    ----------
-    U        : globaler Verschiebungsvektor [mm]
-    D        : Differentialoperator aus preprocessing()
-    elements, sections, materials : Modelldaten
-
-    Returns
-    -------
-    eps : Dehnungen  [-]
-    sig : Spannungen [MPa]
-    N   : Normalkräfte [N]
-    """
-    E_moduli = np.array([materials[sections[el[-1]][-1]][0] for el in elements])
-    areas    = np.array([sections[el[-1]][0]               for el in elements])
-
-    eps = D @ U           # axiale Dehnungen
-    sig = E_moduli * eps  # Spannungen [MPa]
-    N   = sig * areas     # Normalkräfte [N]
-
-    return eps, sig, N
-
-
 def assemble_K(nodal_coordinates, elements, sections, materials):
     """Assemble global stiffness matrix K."""
     dofs = incidence_table(elements)

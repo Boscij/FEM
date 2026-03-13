@@ -10,12 +10,12 @@ def element_stiffness_matrix(EA, xy_e):
     c = dx / L
     s = dy / L
 
-    k_local = (EA / L) * np.array([[1, -1], [-1, 1]])
+    k_lokal = (EA / L) * np.array([[1, -1], [-1, 1]])
 
     T = np.array([[c, s, 0, 0],
                   [0, 0, c, s]])
 
-    return T.T @ k_local @ T
+    return T.T @ k_lokal @ T
 
 
 def incidence_table(elements):

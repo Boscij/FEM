@@ -2,7 +2,7 @@
 
 Willkommen! In diesem Repository lernst du mittels verschiedener Notebooks die Finite-Elemente-Methode kennen.
 
-Viel Erfolg und viel Spass, 
+Viel Erfolg und viel Spass,
 Sebastian
 
 ---
@@ -13,13 +13,22 @@ Du hast zwei Möglichkeiten, die Notebooks in diesem Repository direkt im Browse
 
 - **JupyterLite**: Öffne das Notebook über den JupyterLite-Link. Das startet sofort im Browser und ist ideal zum schnellen Ausprobieren. Deine Änderungen werden dort aber nicht automatisch dauerhaft gespeichert. Wenn du Resultate und Lösungen behalten willst, lade am Ende deine bearbeitete Version des Notebooks herunter.
 
-- **Google Colab**: Öffne das Notebook über den Colab-Link. Das läuft ebenfalls im Browser, aber auf Googles Servern. Dafür brauchst du ein Google-Konto. Damit deine Änderungen gespeichert bleiben, erstelle zu Beginn eine eigene Kopie des Notebooks: **File → Save a copy in Drive** (oder „In Drive speichern“). 
+- **Google Colab**: Öffne das Notebook über den Colab-Link. Das läuft ebenfalls im Browser, aber auf Googles Servern. Dafür brauchst du ein Google-Konto. Damit deine Änderungen gespeichert bleiben, erstelle zu Beginn eine eigene Kopie des Notebooks: **File → Save a copy in Drive** (oder „In Drive speichern").
 
+
+---
+
+## Kapitel 1 – Vorübung
 
 ### Notebook 0: Warm-up
 Python-Grundlagen und Jupyter-Workflow, damit du dich später auf die Mechanik konzentrieren kannst.
-[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=00_Jupyter_Python.ipynb)  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/00_Jupyter_Python.ipynb)  
+
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=00_Jupyter_Python.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/00_Jupyter_Python.ipynb)
+
+---
+
+## Kapitel 2 – FEM mit 1D Stab- und Balkenelementen (Matrixsteifigkeitsmethode)
 
 ### Notebook 1: Übung 05 – Fachwerk
 Elementsteifigkeitsmatrizen, Assemblierung, Randbedingungen und Spannungsberechnung am Beispiel eines ebenen Fachwerks.
@@ -48,18 +57,30 @@ Einsatzbereites Berechnungs-Tool: Modelldaten eingeben, alle Funktionen aufrufen
 ### Notebook 5: Pre-Processing – Grafische Modelleingabe
 Interaktive GUI zur grafischen Eingabe eines ebenen Fachwerks (Knoten, Stäbe, Lager, Lasten). Der generierte Code kann direkt als Input in Notebook 4 verwendet werden. Der GUI-Code ist nicht Vorlesungsstoff – er ist in `fem_pre.py` einsehbar.
 
+### Notebook 6: Zug-Druck-Balkenelemente
+Erweiterung der Matrixsteifigkeitsmethode auf Zug-Druck-Balkenelemente mit drei Freiheitsgraden je Knoten (u, v, φ). Elementsteifigkeitsmatrix, Transformation, Assemblierung und Schnittgrössen (N, V, M) im Vergleich zum Stabelement.
+
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=06_Balkenelemente.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/06_Balkenelemente.ipynb)
+
+---
+
+## Kapitel 3 – Ausblick: FEM mit 2D Elementen
+
+*Folgt in Kürze.*
+
 ---
 
 ## So benutzt du die Notebooks
 
-- **Exercise-Version**: enthält bewusst Lücken (`...`).  
-  Dein Ziel ist zuerst ganz pragmatisch: **Lücken füllen, Notebook ausführen, Resultate erhalten**.  
+- **Exercise-Version**: enthält bewusst Lücken (`...`).
+  Dein Ziel ist zuerst ganz pragmatisch: **Lücken füllen, Notebook ausführen, Resultate erhalten**.
   Wenn der Code läuft, lies ihn nochmals **als Ganzes** durch, damit du verstehst, wie die Teile zusammenspielen (Elementebene, Assemblierung, Randbedingungen, Lösung).
 
-- **Verstehen statt nur “Copy-Paste”**: Schau dir die Funktionen und Datenstrukturen vollständig an und überlege dir bei jeder Zeile: *Was kommt rein, was geht raus, und warum macht das Sinn?*
+- **Verstehen statt nur "Copy-Paste"**: Schau dir die Funktionen und Datenstrukturen vollständig an und überlege dir bei jeder Zeile: *Was kommt rein, was geht raus, und warum macht das Sinn?*
 
 - **Anpassen**: Ändere danach gezielt das Modell für deine Problemstellung:
   - Geometrie (Knoten, Elemente)
   - Material und Querschnitt
-  - Lagerungen und Lasten  
+  - Lagerungen und Lasten
   Kleine Änderungen zuerst, dann schrittweise komplexer.

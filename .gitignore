@@ -118,7 +118,6 @@ _output
 # solutions
 *_loesung.ipynb
 *_lsg.ipynb
-content/03_Matrixsteifigkeitsmethode_Funktionen.ipynb
 
 # explicitly track fem_core
 !content/fem_core.py

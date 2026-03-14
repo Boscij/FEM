@@ -57,6 +57,10 @@ Einsatzbereites Berechnungs-Tool: Modelldaten eingeben, alle Funktionen aufrufen
 ### Notebook 5: Pre-Processing – Grafische Modelleingabe
 Interaktive GUI zur grafischen Eingabe eines ebenen Fachwerks (Knoten, Stäbe, Lager, Lasten). Der generierte Code kann direkt als Input in Notebook 4 verwendet werden. Der GUI-Code ist nicht Vorlesungsstoff – er ist in `fem_pre.py` einsehbar.
 
+> **Hinweis:** Dieses Notebook benötigt eine lokale Jupyter-Umgebung oder Google Colab (nicht JupyterLite), da es interaktive Matplotlib-Widgets verwendet.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/05_Pre_processing.ipynb)
+
 ### Notebook 6: Zug-Druck-Balkenelemente
 Erweiterung der Matrixsteifigkeitsmethode auf Zug-Druck-Balkenelemente mit drei Freiheitsgraden je Knoten (u, v, φ). Elementsteifigkeitsmatrix, Transformation, Assemblierung und Schnittgrössen (N, V, M) im Vergleich zum Stabelement.
 

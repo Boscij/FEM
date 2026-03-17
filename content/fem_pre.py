@@ -26,6 +26,7 @@ def show_gui():
 
     plt.close('all')
     clear_output()
+    plt.ioff()   # Verhindert Auto-Display der Figure in Colab
 
     # -- Modell-Zustand -------------------------------------------------------
     model = {

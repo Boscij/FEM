@@ -187,10 +187,9 @@ def show_gui():
 
     coord_lbl = w.Label(value='', layout=w.Layout(width='230px'))
 
-    mode_sel = w.ToggleButtons(
+    mode_sel = w.RadioButtons(
         options=['Knoten', 'Stab', 'Lager', 'Last'],
         value='Knoten',
-        style={'button_width': '52px'},
         layout=w.Layout(width='230px'),
     )
 
@@ -209,9 +208,14 @@ def show_gui():
         n = model['sel']
         if n is None: return
         model['constraints'] = [[nd, a, v] for nd, a, v in model['constraints'] if nd != n]
-        if con_ux.value: model['constraints'].append([n, 0, 0.0])
-        if con_uy.value: model['constraints'].append([n, 1, 0.0])
-        model['loads'] = [[nd, a, f] for nd, a, f in model['loads'] if nd != n]
+        if con_ux.value:
+            model['constraints'].append([n, 0, 0.0])
+            model['loads'] = [[nd, a, f] for nd, a, f in model['loads']
+                              if not (nd == n and a == 0)]
+        if con_uy.value:
+            model['constraints'].append([n, 1, 0.0])
+            model['loads'] = [[nd, a, f] for nd, a, f in model['loads']
+                              if not (nd == n and a == 1)]
         model['sel'] = None; redraw()
 
     con_btn.on_click(_apply_con)
@@ -231,9 +235,14 @@ def show_gui():
         n = model['sel']
         if n is None: return
         model['loads'] = [[nd, a, f] for nd, a, f in model['loads'] if nd != n]
-        if load_fx.value != 0.0: model['loads'].append([n, 0, load_fx.value])
-        if load_fy.value != 0.0: model['loads'].append([n, 1, load_fy.value])
-        model['constraints'] = [[nd, a, v] for nd, a, v in model['constraints'] if nd != n]
+        if load_fx.value != 0.0:
+            model['loads'].append([n, 0, load_fx.value])
+            model['constraints'] = [[nd, a, v] for nd, a, v in model['constraints']
+                                    if not (nd == n and a == 0)]
+        if load_fy.value != 0.0:
+            model['loads'].append([n, 1, load_fy.value])
+            model['constraints'] = [[nd, a, v] for nd, a, v in model['constraints']
+                                    if not (nd == n and a == 1)]
         model['sel'] = None; redraw()
 
     load_btn.on_click(_apply_load)

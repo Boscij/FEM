@@ -348,7 +348,7 @@ def show_gui():
         w.HTML('<b>Stab-Key</b>'),
         sec_key_in,
         sep,
-        w.HTML('<b>Eigenschaften</b>'),
+        w.HTML('<b>Eigenschaften [TEST v2]</b>'),
         lager_box,
         sep,
         last_box,

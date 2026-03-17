@@ -165,14 +165,12 @@ def show_gui():
             model['sel'] = n
             con_ux.value = any(nd == n and a == 0 for nd, a, _ in model['constraints'])
             con_uy.value = any(nd == n and a == 1 for nd, a, _ in model['constraints'])
-            props_tabs.selected_index = 0
         elif mode == 'Last':
             n = nearest_node(x, y)
             if n is None: return
             model['sel'] = n
             load_fx.value = next((f for nd, a, f in model['loads'] if nd == n and a == 0), 0.0)
             load_fy.value = next((f for nd, a, f in model['loads'] if nd == n and a == 1), 0.0)
-            props_tabs.selected_index = 1
         redraw()
 
     def on_motion(event):
@@ -242,14 +240,14 @@ def show_gui():
         load_fx, load_fy, load_btn,
     ])
 
-    props_tabs = w.Tab(children=[lager_panel, last_panel],
-                       layout=w.Layout(min_height='140px'))
-    # set_title fuer ipywidgets 7.x; titles-Trait fuer 8.x
-    try:
-        props_tabs.titles = ['Lager', 'Last']
-    except Exception:
-        props_tabs.set_title(0, 'Lager')
-        props_tabs.set_title(1, 'Last')
+    lager_box = w.VBox([
+        w.HTML('<b>Lager</b>'),
+        lager_panel,
+    ])
+    last_box = w.VBox([
+        w.HTML('<b>Last</b>'),
+        last_panel,
+    ])
 
     sec_text = w.Textarea(
         value='s1: A=15.00, E=210000\ns2: A=28.28, E=210000\ns3: A=10.00, E=210000\ns4: A=56.56, E=210000\ns5: A=10.00, E=210000',
@@ -351,7 +349,9 @@ def show_gui():
         sec_key_in,
         sep,
         w.HTML('<b>Eigenschaften</b>'),
-        props_tabs,
+        lager_box,
+        sep,
+        last_box,
         sep,
         w.HTML('<b>Querschnitte</b> <small>(key: A=..., E=...)</small>'),
         sec_text,

@@ -242,7 +242,14 @@ def show_gui():
         load_fx, load_fy, load_btn,
     ])
 
-    props_tabs = w.Tab(children=[lager_panel, last_panel], titles=['Lager', 'Last'])
+    props_tabs = w.Tab(children=[lager_panel, last_panel],
+                       layout=w.Layout(min_height='140px'))
+    # set_title fuer ipywidgets 7.x; titles-Trait fuer 8.x
+    try:
+        props_tabs.titles = ['Lager', 'Last']
+    except Exception:
+        props_tabs.set_title(0, 'Lager')
+        props_tabs.set_title(1, 'Last')
 
     sec_text = w.Textarea(
         value='s1: A=15.00, E=210000\ns2: A=28.28, E=210000\ns3: A=10.00, E=210000\ns4: A=56.56, E=210000\ns5: A=10.00, E=210000',

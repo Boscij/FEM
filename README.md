@@ -37,35 +37,29 @@ Elementsteifigkeitsmatrizen, Assemblierung, Randbedingungen und Spannungsberechn
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/01_UE05_Fachwerk.ipynb)
 
 ### Notebook 2: Matrixsteifigkeitsmethode
-Von lokaler Elementsteifigkeit über Transformation bis zur globalen Strukturmatrix und zu den Verschiebungen/Kräften.
+Vollständige Berechnung eines ebenen Fachwerks über die Bibliotheksfunktionen in `fem_core.py`. Workflow: Modell definieren → `assemble_K` → `solve_system` → Post-Processing → Visualisierung.
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=02_Matrixsteifigkeitsmethode.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/02_Matrixsteifigkeitsmethode.ipynb)
 
-### Notebook 3: Matrixsteifigkeitsmethode – Aufruf über Funktionen
-Gleiche Berechnung wie in Notebook 2, aber vollständig über Funktionen ausgeführt. Kein Lückentext – der Fokus liegt auf dem sauberen Zusammenspiel der Bibliotheksfunktionen.
-
-[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=03_Matrixsteifigkeitsmethode_Funktionen.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/03_Matrixsteifigkeitsmethode_Funktionen.ipynb)
-
-### Notebook 4: Matrixsteifigkeitsmethode – Komplettes Tool
+### Notebook 3: Matrixsteifigkeitsmethode – Tool
 Einsatzbereites Berechnungs-Tool: Modelldaten eingeben, alle Funktionen aufrufen, Ergebnisse (Verschiebungen, Lagerkräfte, Dehnungen, Spannungen, Normalkräfte) und Visualisierung erhalten.
 
-[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=04_Matrixsteifigkeitsmethode.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/04_Matrixsteifigkeitsmethode.ipynb)
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=03_Matrixsteifigkeitsmethode.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/03_Matrixsteifigkeitsmethode.ipynb)
 
-### Notebook 5: Pre-Processing – Grafische Modelleingabe
-Interaktive GUI zur grafischen Eingabe eines ebenen Fachwerks (Knoten, Stäbe, Lager, Lasten). Der generierte Code kann direkt als Input in Notebook 4 verwendet werden. Der GUI-Code ist nicht Vorlesungsstoff – er ist in `fem_pre.py` einsehbar.
+### Notebook 4: Pre-Processing – Grafische Modelleingabe und Berechnung
+Interaktive GUI zur grafischen Eingabe eines ebenen Fachwerks (Knoten, Stäbe, Lager, Lasten). Der generierte Code wird direkt als Modell-Input in denselben Notebook übernommen und berechnet.
 
 > **Hinweis:** Dieses Notebook benötigt eine lokale Jupyter-Umgebung oder Google Colab (nicht JupyterLite), da es interaktive Matplotlib-Widgets verwendet.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/05_Pre_processing.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/04_Pre_processing.ipynb)
 
-### Notebook 6: Zug-Druck-Balkenelemente
+### Notebook 5: Zug-Druck-Balkenelemente
 Erweiterung der Matrixsteifigkeitsmethode auf Zug-Druck-Balkenelemente mit drei Freiheitsgraden je Knoten (u, v, φ). Elementsteifigkeitsmatrix, Transformation, Assemblierung und Schnittgrössen (N, V, M) im Vergleich zum Stabelement.
 
-[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=06_Balkenelemente.ipynb)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/06_Balkenelemente.ipynb)
+[![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=05_Balkenelemente.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/05_Balkenelemente.ipynb)
 
 ---
 
@@ -77,14 +71,11 @@ Erweiterung der Matrixsteifigkeitsmethode auf Zug-Druck-Balkenelemente mit drei 
 
 ## So benutzt du die Notebooks
 
-- **Exercise-Version**: enthält bewusst Lücken (`...`).
-  Dein Ziel ist zuerst ganz pragmatisch: **Lücken füllen, Notebook ausführen, Resultate erhalten**.
-  Wenn der Code läuft, lies ihn nochmals **als Ganzes** durch, damit du verstehst, wie die Teile zusammenspielen (Elementebene, Assemblierung, Randbedingungen, Lösung).
-
 - **Verstehen statt nur "Copy-Paste"**: Schau dir die Funktionen und Datenstrukturen vollständig an und überlege dir bei jeder Zeile: *Was kommt rein, was geht raus, und warum macht das Sinn?*
 
-- **Anpassen**: Ändere danach gezielt das Modell für deine Problemstellung:
+- **Anpassen**: Ändere das Modell für deine Problemstellung:
   - Geometrie (Knoten, Elemente)
   - Material und Querschnitt
   - Lagerungen und Lasten
+
   Kleine Änderungen zuerst, dann schrittweise komplexer.

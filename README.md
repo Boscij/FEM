@@ -35,13 +35,13 @@ Einstieg in die FEM: Elementsteifigkeitsmatrizen, Transformation, Assemblierung,
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/01_UE05_Fachwerk.ipynb)
 
 ### Notebook 2: Matrixsteifigkeitsmethode – Funktionen
-Dasselbe Fachwerk wie in Notebook 1, aber die gesamte FE-Logik ist in `fem_core.py` gekapselt. Der Fokus liegt auf dem **Zusammenspiel der Funktionen**: Modell definieren, `assemble_K` aufrufen, mit `solve_system` lösen, Ergebnisse mit `postprocessing` und `plot_results` auswerten.
+Dasselbe Fachwerk wie in Notebook 1, aber jetzt werden alle Schritte in **eigene Funktionen** verpackt: `element_stiffness_matrix`, `incidence_table`, `assemble_K`, `solve_system`. Die Funktionen entstehen direkt im Notebook – so ist nachvollziehbar, was darin steckt.
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=02_Matrixsteifigkeitsmethode_Funktionen.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/02_Matrixsteifigkeitsmethode_Funktionen.ipynb)
 
 ### Notebook 3: Matrixsteifigkeitsmethode – Tool
-Erweiterung von Notebook 2 zum **einsatzbereiten Berechnungs-Tool**: Modelldaten anpassen, eine Zelle ausführen, alle Ergebnisse (Verschiebungen, Lagerkräfte, Dehnungen, Spannungen, Normalkräfte) und Visualisierung erhalten. Geeignet für beliebige ebene Fachwerke.
+Die Funktionen aus Notebook 2 sind nun in `fem_core.py` ausgelagert und werden nur noch importiert. Das Notebook konzentriert sich auf das **Modell und die Ergebnisse** – kein Implementierungsdetail mehr sichtbar. Geeignet als einsatzbereites Tool für beliebige ebene Fachwerke.
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=03_Matrixsteifigkeitsmethode_Tool.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/03_Matrixsteifigkeitsmethode_Tool.ipynb)

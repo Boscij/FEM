@@ -1,0 +1,230 @@
+% Finite-Elemente (ZHAW) — Beamer-Template
+% Vorlesung 06: Schwache Form und Herleitung der Elementsteifigkeitsmatrix
+
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+
+% --- Sprache/Encoding ---
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% --- Mathe & Grafik ---
+\usepackage{amsmath,amssymb,bm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,matrix,fit,backgrounds}
+
+% --- Tabellen/Listen ---
+\usepackage{booktabs}
+\usepackage{multicol}
+
+% --- Theme/Look ---
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+% Fußzeile: Foliennummern
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.5ex,dp=1.1ex,left]{author in head/foot}\hspace{1em}\insertshortauthor\hspace{1em}--\hspace{1em}\insertshorttitle\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.5ex,dp=1.1ex,right]{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace{1em}\end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% --- Metadaten ---
+\title[FEM]{Finite Elemente Methode}
+\subtitle{Vorlesung}
+\author[ZHAW]{Sebastian Domaschke}
+\institute[ZHAW]{Zürcher Hochschule für Angewandte Wissenschaften (ZHAW)}
+\date{Frühlingssemester 2026}
+\titlegraphic{\includegraphics[height=1.2cm]{../Grafiken/logo.pdf}}
+
+% --- Nützliche Makros ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\K}{\underline{\underline{K}}}
+\newcommand{\fvec}{\mathbf{f}}
+\newcommand{\uvec}{\mathbf{u}}
+\newcommand{\mat}[1]{\underline{\underline{#1}}}
+\newcommand{\Ke}{\mat{K}^e}
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+% Titelfolie
+% ---------------------------------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Übergeordnetes Lernziel
+% ---------------------------------------------------------------------------
+\begin{frame}{Übergeordnetes Lernziel 3}
+  \centering
+  \begin{minipage}{0.9\linewidth}
+    \centering
+    {\LARGE Herleitung der Elementsteifigkeitsmatrix\\[0.6em]}
+    {\Large aus der \textbf{schwachen Form} (Variationsansatz / Galerkin)\\[0.4em]}
+    {\normalsize Verknüpfung von Mechanik, Mathematik und Numerik}
+  \end{minipage}
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Lernziele
+% ---------------------------------------------------------------------------
+\begin{frame}{Lernziele Vorlesung}
+  \small
+  Sie können
+  \begin{enumerate}
+    \item die starke Form (DGL + RB) eines 1D-Stabproblems aufschreiben und erläutern.
+    \item die starke Form in die \textbf{schwache Form} (Prinzip der virtuellen Arbeit) überführen, indem Sie mit einer Testfunktion $\delta u$ multiplizieren und partiell integrieren.
+    \item den \textbf{Galerkin-Ansatz} anwenden: Ansatz- und Testfunktionen durch Formfunktionen $N_i$ ausdrücken.
+    \item die \textbf{Elementsteifigkeitsmatrix} $\Ke$ und den \textbf{Elementlastvektor} $\mathbf{f}^e$ aus der schwachen Form systematisch herleiten.
+    \item den Zusammenhang zwischen der variationellen Herleitung und der bekannten Matrixsteifigkeitsmethode erklären.
+  \end{enumerate}
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Tafelbild – Starke Form
+% ---------------------------------------------------------------------------
+\begin{frame}{Tafelbild: Starke Form des Stabproblems}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.45\textwidth}
+      \textbf{Starke Form} (DGL + Randbedingungen)
+      \vspace{0.8em}
+
+      Gleichgewicht im Stab ($0 \le x \le L$):
+      \[
+        -\frac{\dd}{\dd x}\!\left(EA\,\frac{\dd u}{\dd x}\right) = f(x)
+      \]
+
+      \vspace{0.5em}
+      Randbedingungen:
+      \begin{align*}
+        u(0) &= \bar{u} \quad \text{(geometrisch / Dirichlet)}\\
+        EA\,\frac{\dd u}{\dd x}\Big|_{x=L} &= \bar{F} \quad \text{(natürlich / Neumann)}
+      \end{align*}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}[scale=0.85,
+          force/.style={-{Latex[length=2.5mm]}, thick, red!80!black},
+          support/.style={thick},
+        ]
+        % Stab
+        \draw[very thick] (0,0) rectangle (5,0.6);
+        \node at (2.5,0.3) {$EA = \text{const}$};
+        % Länge
+        \draw[<->] (0,-0.4) -- (5,-0.4) node[midway, below] {$L$};
+        % Einspannung links
+        \draw[support] (0,0) -- (0,0.6);
+        \foreach \y in {0,0.15,...,0.75} {\draw (0,\y) -- (-0.25,\y-0.2);}
+        % Streckenlast
+        \foreach \x in {0.5,1.2,...,4.5} {
+          \draw[force] (\x,0.9) -- (\x,0.65);
+        }
+        \node[red!80!black] at (2.5,1.15) {$f(x)$};
+        % Einzelkraft rechts
+        \draw[force] (5.9,0.3) -- (5.1,0.3) node[midway, above] {$\bar{F}$};
+        % x-Achse
+        \draw[->] (0,-0.9) -- (5.5,-0.9) node[right] {$x$};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Tafelbild – Schwache Form
+% ---------------------------------------------------------------------------
+\begin{frame}{Tafelbild: Von der starken zur schwachen Form}
+  \textbf{Vorgehen:} Multipliziere DGL mit Testfunktion $\delta u$ (virtuell, $\delta u(0)=0$),
+  integriere über das Gebiet und wende partielle Integration an.
+
+  \vspace{0.8em}
+  \begin{block}{Schwache Form (Prinzip der virtuellen Arbeit)}
+    \[
+      \int_0^L EA\,\frac{\dd(\delta u)}{\dd x}\,\frac{\dd u}{\dd x}\,\dd x
+      \;=\;
+      \int_0^L \delta u\,f\,\dd x \;+\; \delta u(L)\,\bar{F}
+    \]
+  \end{block}
+
+  \vspace{0.5em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{Linke Seite} $\longrightarrow$ innere virtuelle Arbeit\\[0.3em]
+      \hspace{1em}$\displaystyle\int_0^L \delta\varepsilon\cdot\sigma\,\dd x$
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Rechte Seite} $\longrightarrow$ äussere virtuelle Arbeit\\[0.3em]
+      \hspace{1em}Volumenlasten + Randlasten
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Tafelbild – Galerkin-Ansatz & Formfunktionen
+% ---------------------------------------------------------------------------
+\begin{frame}{Tafelbild: Galerkin-Ansatz und Formfunktionen}
+  \textbf{Ansatz} auf einem Element $[0, L^e]$: Verschiebung durch Knotenverschiebungen interpolieren
+  \[
+    u^e(x) = N_1(x)\,u_1 + N_2(x)\,u_2 = \mathbf{N}(x)\,\mathbf{u}^e,
+    \qquad
+    \delta u^e = \mathbf{N}(x)\,\delta\mathbf{u}^e
+  \]
+
+  \vspace{0.3em}
+  Lineare Formfunktionen (Stab):
+  \[
+    N_1(x) = 1 - \frac{x}{L^e}, \qquad N_2(x) = \frac{x}{L^e}
+  \]
+
+  \vspace{0.5em}
+  Dehnung:
+  \[
+    \varepsilon^e = \frac{\dd u^e}{\dd x} = \underbrace{\frac{\dd \mathbf{N}}{\dd x}}_{\mathbf{B}}\,\mathbf{u}^e,
+    \qquad
+    \mathbf{B} = \frac{1}{L^e}\begin{bmatrix}-1 & 1\end{bmatrix}
+  \]
+
+  \vspace{0.5em}
+  Einsetzen in die schwache Form liefert:
+  \[
+    \delta(\mathbf{u}^e)^T \underbrace{\int_0^{L^e} \mathbf{B}^T EA\, \mathbf{B}\,\dd x}_{\Ke}\,\mathbf{u}^e
+    = \delta(\mathbf{u}^e)^T\,\mathbf{f}^e
+    \qquad \forall\;\delta\mathbf{u}^e
+  \]
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Tafelbild – Elementsteifigkeitsmatrix
+% ---------------------------------------------------------------------------
+\begin{frame}{Tafelbild: Elementsteifigkeitsmatrix aus schwacher Form}
+  \begin{block}{Elementsteifigkeitsmatrix $\Ke$ (allgemein)}
+    \[
+      \Ke = \int_0^{L^e} \mathbf{B}^T\, EA\, \mathbf{B}\,\dd x
+    \]
+  \end{block}
+
+  \vspace{0.5em}
+  Auswertung mit $\mathbf{B} = \tfrac{1}{L^e}[-1\;\; 1]$ und $EA = \text{const}$:
+  \[
+    \Ke
+    = \frac{EA}{(L^e)^2}\int_0^{L^e}
+      \begin{bmatrix}-1\\1\end{bmatrix}
+      \begin{bmatrix}-1 & 1\end{bmatrix}
+      \dd x
+    = \frac{EA}{L^e}
+      \begin{bmatrix}\phantom{-}1 & -1\\-1 & \phantom{-}1\end{bmatrix}
+  \]
+
+  \vspace{0.5em}
+  \begin{alertblock}{Ergebnis}
+    Dieselbe Matrix wie aus der Matrixsteifigkeitsmethode — jetzt \textbf{systematisch hergeleitet}.
+  \end{alertblock}
+\end{frame}
+
+\end{document}

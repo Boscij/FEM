@@ -98,6 +98,125 @@
 \end{frame}
 
 % ---------------------------------------------------------------------------
+% Motivation
+% ---------------------------------------------------------------------------
+\begin{frame}{Herleitung Elementsteifigkeitsmatrizen}
+  \begin{columns}[T,onlytextwidth]
+
+    %% ---- Stab (links) ----
+    \begin{column}{0.46\textwidth}
+      \textbf{Stab}
+      \begin{itemize}\small
+        \item 1-D, linear
+        \item 1 FG pro Knoten
+        \item 2 Knoten pro Element
+        \item 2 FG pro Element
+      \end{itemize}
+      \vspace{0.4em}
+      \centering
+      \begin{tikzpicture}[scale=0.82,
+          force/.style={-{Latex[length=2mm]}, thick},
+          disp/.style={-{Latex[length=2mm]}, thick, green!60!black},
+          node/.style={circle, fill=blue!70!black, inner sep=2.2pt},
+        ]
+        % Stab
+        \draw[very thick] (0,0) -- (3.5,0);
+        \node[node] (n1) at (0,0)   {};
+        \node[node] (n2) at (3.5,0) {};
+        \node[below=2pt] at (n1) {\small\textbf{1}};
+        \node[below=2pt] at (n2) {\small\textbf{2}};
+        % Länge + EA
+        \draw[<->] (0,-0.45) -- (3.5,-0.45) node[midway,below] {$L^e$};
+        \node at (1.75,0.28) {$E^e A^e$};
+        % Kräfte
+        \draw[force, red!80!black] (-0.7,0) -- (n1) node[midway,above]{\color{red!80!black}$f_1^e$};
+        \draw[force, red!80!black] (n2)     -- ++(0.7,0) node[midway,above]{\color{red!80!black}$f_2^e$};
+        % Verschiebungen
+        \draw[disp] (-0.7,-0.18) -- ++( 0.55,0) node[right]{\scriptsize$u_1^e$};
+        \draw[disp] (3.5,-0.18)  -- ++( 0.55,0) node[right]{\scriptsize$u_2^e$};
+        % Achsen
+        \draw[->] (0,0.6) -- ++(0.7,0) node[right]{$x$};
+        \draw[->] (0,0.6) -- ++(0,0.5) node[above]{$y$};
+      \end{tikzpicture}
+
+      \vspace{0.5em}
+      \[
+        \begin{pmatrix}f_1^e\\f_2^e\end{pmatrix}
+        =\frac{E^e A^e}{L^e}
+        \begin{pmatrix}1&-1\\-1&1\end{pmatrix}
+        \begin{pmatrix}u_1^e\\u_2^e\end{pmatrix}
+      \]
+      \[
+        \underline{f}^e = \underline{\underline{k}}^e\,\underline{u}^e
+      \]
+    \end{column}
+
+    %% ---- Tetraeder (rechts) ----
+    \begin{column}{0.52\textwidth}
+      \textbf{Tetraeder}
+      \begin{itemize}\small
+        \item 3-D, quadratisch
+        \item 3 FG pro Knoten
+        \item 10 Knoten pro Element
+        \item 30 FG pro Element
+      \end{itemize}
+      \vspace{0.2em}
+      \begin{columns}[T]
+        \begin{column}{0.52\linewidth}
+          \vspace{0.3em}
+          \scriptsize
+          \[
+            \begin{pmatrix}f_1^e\\f_2^e\\f_3^e\\\vdots\\f_{29}^e\\f_{30}^e\end{pmatrix}
+            =
+            \begin{pmatrix}
+              K_{11}&K_{12}&\cdots&K_{1,30}\\
+              K_{21}&K_{22}&\cdots&K_{2,30}\\
+              \vdots&\vdots&\ddots&\vdots\\
+              K_{30,1}&\cdots&&K_{30,30}
+            \end{pmatrix}
+            \begin{pmatrix}u_1^e\\u_2^e\\u_3^e\\\vdots\\u_{29}^e\\u_{30}^e\end{pmatrix}
+          \]
+        \end{column}
+        \begin{column}{0.46\linewidth}
+          \centering
+          \begin{tikzpicture}[scale=1.0,
+              nd/.style={circle, fill=black, inner sep=1.5pt},
+              mnd/.style={circle, fill=gray!70, inner sep=1.2pt},
+            ]
+            % Eckknoten (Tetraeder 3D-Projektion)
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (2.0,0);
+            \coordinate (C) at (1.3,0.8);
+            \coordinate (D) at (0.9,1.8);
+            % Kanten
+            \draw[thick] (A)--(B)--(C)--cycle;
+            \draw[thick] (A)--(D); \draw[thick] (B)--(D); \draw[thick] (C)--(D);
+            \draw[dashed,gray] (A)--(C); % verdeckt
+            % Eckknoten
+            \foreach \p in {A,B,C,D} {\node[nd] at (\p) {};}
+            % Mittenknoten
+            \node[mnd] at ($(A)!0.5!(B)$) {};
+            \node[mnd] at ($(A)!0.5!(C)$) {};
+            \node[mnd] at ($(B)!0.5!(C)$) {};
+            \node[mnd] at ($(A)!0.5!(D)$) {};
+            \node[mnd] at ($(B)!0.5!(D)$) {};
+            \node[mnd] at ($(C)!0.5!(D)$) {};
+            % Achsen
+            \draw[->] (2.3,0) -- ++(0.5,0)   node[right]{\tiny$\eta$};
+            \draw[->] (2.3,0) -- ++(0,0.5)   node[above]{\tiny$\zeta$};
+            \draw[->] (2.3,0) -- ++(-0.35,-0.28) node[below]{\tiny$\xi$};
+          \end{tikzpicture}
+
+          \vspace{0.6em}
+          \alert{\large\textbf{Wie soll das gehen?}}
+        \end{column}
+      \end{columns}
+    \end{column}
+
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------------------
 % Lernziele
 % ---------------------------------------------------------------------------
 \begin{frame}{Lernziele Vorlesung}

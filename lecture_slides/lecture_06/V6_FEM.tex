@@ -217,6 +217,36 @@
 \end{frame}
 
 % ---------------------------------------------------------------------------
+% Vorgehen
+% ---------------------------------------------------------------------------
+\begin{frame}{Vorgehen – Herleitung der Elementsteifigkeitsmatrizen}
+  \small
+  Wir leiten die ESM für folgende mechanische Problemstellungen systematisch her:
+
+  \vspace{0.6em}
+  \begin{tabular}{@{}clccc@{}}
+    \toprule
+    & \textbf{Element} & \textbf{Dim.} & \textbf{Knoten} & \textbf{FG / Element} \\
+    \midrule
+    \textbf{1} & Stab                        & 1D         & 2  & 2  \\[0.3em]
+    \textbf{2} & Seil                        & 1D         & 2  & 2  \\[0.3em]
+    \textbf{3} & Membranelement (Dreieck)     & 2D         & 3  & 6  \\[0.3em]
+    \textbf{4} & Membranelement (Linie)       & 2D\,$\to$\,1D & 2 & 4 \\[0.3em]
+    \textbf{5} & Tetraederelement (quadrat.)  & 3D         & 10 & 30 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.8em}
+  \begin{block}{Allgemeines Schema (für alle Elemente gleich)}
+    \[
+      \mat{k}^e = \int_{\Omega^e} \mathbf{B}^T\,\mathbf{C}\,\mathbf{B}\;\mathrm{d}\Omega
+    \]
+    mit \textbf{B} = Verzerrungs-Verschiebungs-Matrix,\quad
+        \textbf{C} = Materialmatrix (Werkstoffgesetz)
+  \end{block}
+\end{frame}
+
+% ---------------------------------------------------------------------------
 % Lernziele
 % ---------------------------------------------------------------------------
 \begin{frame}{Lernziele Vorlesung}

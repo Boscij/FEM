@@ -194,29 +194,20 @@
 % Vorgehen
 % ---------------------------------------------------------------------------
 \begin{frame}{Vorgehen – Herleitung der Elementsteifigkeitsmatrizen}
-  \small
+  \centering\small
   \begin{tabular}{@{}clccc@{}}
     \toprule
     & \textbf{Element} & \textbf{Dim.} & \textbf{Knoten} & \textbf{FG / Element} \\
     \midrule
-    \textbf{1} & Stab (einfach)                       & 1D         & 2  & 2  \\[0.3em]
-        \textbf{2} & Stab (allgemeiner)                  & 1D         & 2  & 2  \\[0.3em]
-    \textbf{2} & Seil                        & 1D         & 2  & 2  \\[0.3em]
-    \textbf{3} & Membranelement   & 2D         & 3  & 6  \\[0.3em]
-    \textbf{4} & Membranelement (vereinfacht)     & 2D\,$\to$\,1D & 2 & 4 \\[0.3em]
-        \textbf{5} & Isoparametrisches Scheibenelement       & 2D & 4 & 8 \\[0.3em]
-    \textbf{6} & Tetraederelement (optional)  & 3D         & 10 & 30 \\
+    \textbf{1} & Stab (einfach)                      & 1D             & 2  & 2  \\[0.3em]
+    \textbf{2} & Stab (allgemeiner)                  & 1D             & 2  & 2  \\[0.3em]
+    \textbf{3} & Seil                                & 1D             & 2  & 2  \\[0.3em]
+    \textbf{4} & Membranelement                      & 2D             & 3  & 6  \\[0.3em]
+    \textbf{5} & Membranelement (vereinfacht)        & 2D\,$\to$\,1D  & 2  & 4  \\[0.3em]
+    \textbf{6} & Isoparametrisches Scheibenelement   & 2D             & 4  & 8  \\[0.3em]
+    \textbf{7} & Tetraederelement (optional)         & 3D             & 10 & 30 \\
     \bottomrule
   \end{tabular}
-
-  \vspace{0.8em}
-  \begin{block}{Allgemeines Schema (für alle Elemente gleich)}
-    \[
-      \mat{k}^e = \int_{\Omega^e} \mathbf{B}^T\,\mathbf{C}\,\mathbf{B}\;\mathrm{d}\Omega
-    \]
-    mit \textbf{B} = Verzerrungs-Verschiebungs-Matrix,\quad
-        \textbf{C} = Materialmatrix (Werkstoffgesetz)
-  \end{block}
 \end{frame}
 
 % ---------------------------------------------------------------------------

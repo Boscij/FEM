@@ -101,9 +101,9 @@
 % Motivation
 % ---------------------------------------------------------------------------
 \begin{frame}{Herleitung Elementsteifigkeitsmatrizen}
-  \begin{columns}[T,onlytextwidth]
 
-    %% ---- Stab (links) ----
+  %% -- Zeile 1: Eigenschaften --
+  \begin{columns}[T,onlytextwidth]
     \begin{column}{0.46\textwidth}
       \textbf{Stab}
       \begin{itemize}\small
@@ -112,46 +112,7 @@
         \item 2 Knoten pro Element
         \item 2 FG pro Element
       \end{itemize}
-      \vspace{0.4em}
-      \centering
-      \begin{tikzpicture}[scale=0.82,
-          force/.style={-{Latex[length=2mm]}, thick},
-          disp/.style={-{Latex[length=2mm]}, thick, green!60!black},
-          node/.style={circle, fill=blue!70!black, inner sep=2.2pt},
-        ]
-        % Stab
-        \draw[very thick] (0,0) -- (3.5,0);
-        \node[node] (n1) at (0,0)   {};
-        \node[node] (n2) at (3.5,0) {};
-        \node[below=2pt] at (n1) {\small\textbf{1}};
-        \node[below=2pt] at (n2) {\small\textbf{2}};
-        % Länge + EA
-        \draw[<->] (0,-0.45) -- (3.5,-0.45) node[midway,below] {$L^e$};
-        \node at (1.75,0.28) {$E^e A^e$};
-        % Kräfte
-        \draw[force, red!80!black] (-0.7,0) -- (n1) node[midway,above]{\color{red!80!black}$f_1^e$};
-        \draw[force, red!80!black] (n2)     -- ++(0.7,0) node[midway,above]{\color{red!80!black}$f_2^e$};
-        % Verschiebungen
-        \draw[disp] (-0.7,-0.18) -- ++( 0.55,0) node[right]{\scriptsize$u_1^e$};
-        \draw[disp] (3.5,-0.18)  -- ++( 0.55,0) node[right]{\scriptsize$u_2^e$};
-        % Achsen
-        \draw[->] (0,0.6) -- ++(0.7,0) node[right]{$x$};
-        \draw[->] (0,0.6) -- ++(0,0.5) node[above]{$y$};
-      \end{tikzpicture}
-
-      \vspace{0.5em}
-      \[
-        \begin{pmatrix}f_1^e\\f_2^e\end{pmatrix}
-        =\frac{E^e A^e}{L^e}
-        \begin{pmatrix}1&-1\\-1&1\end{pmatrix}
-        \begin{pmatrix}u_1^e\\u_2^e\end{pmatrix}
-      \]
-      \[
-        \underline{f}^e = \underline{\underline{k}}^e\,\underline{u}^e
-      \]
     \end{column}
-
-    %% ---- Tetraeder (rechts) ----
     \begin{column}{0.52\textwidth}
       \textbf{Tetraeder}
       \begin{itemize}\small
@@ -160,34 +121,72 @@
         \item 10 Knoten pro Element
         \item 30 FG pro Element
       \end{itemize}
-      \vspace{0.2em}
-      \begin{columns}[T]
-        \begin{column}{0.52\linewidth}
-          \vspace{0.3em}
-          \scriptsize
-          \[
-            \begin{pmatrix}f_1^e\\f_2^e\\f_3^e\\\vdots\\f_{29}^e\\f_{30}^e\end{pmatrix}
-            =
-            \begin{pmatrix}
-              K_{11}&K_{12}&\cdots&K_{1,30}\\
-              K_{21}&K_{22}&\cdots&K_{2,30}\\
-              \vdots&\vdots&\ddots&\vdots\\
-              K_{30,1}&\cdots&&K_{30,30}
-            \end{pmatrix}
-            \begin{pmatrix}u_1^e\\u_2^e\\u_3^e\\\vdots\\u_{29}^e\\u_{30}^e\end{pmatrix}
-          \]
-        \end{column}
-        \begin{column}{0.46\linewidth}
-          \centering
-          \includegraphics[width=\linewidth,keepaspectratio]{../Grafiken/Tetraeder.png}
-
-          \vspace{0.6em}
-          \alert{\large\textbf{Wie soll das gehen?}}
-        \end{column}
-      \end{columns}
     \end{column}
-
   \end{columns}
+
+  \vspace{0.4em}
+
+  %% -- Zeile 2: Skizzen (gleiche Höhe) --
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=0.82,
+          force/.style={-{Latex[length=2mm]}, thick},
+          disp/.style={-{Latex[length=2mm]}, thick, green!60!black},
+          nd/.style={circle, fill=blue!70!black, inner sep=2.2pt},
+        ]
+        \draw[very thick] (0,0) -- (3.5,0);
+        \node[nd] (n1) at (0,0)   {};
+        \node[nd] (n2) at (3.5,0) {};
+        \node[below=2pt] at (n1) {\small\textbf{1}};
+        \node[below=2pt] at (n2) {\small\textbf{2}};
+        \draw[<->] (0,-0.45) -- (3.5,-0.45) node[midway,below] {$L^e$};
+        \node at (1.75,0.28) {$E^e A^e$};
+        \draw[force, red!80!black] (-0.7,0) -- (n1) node[midway,above]{\color{red!80!black}$f_1^e$};
+        \draw[force, red!80!black] (n2) -- ++(0.7,0) node[midway,above]{\color{red!80!black}$f_2^e$};
+        \draw[disp] (-0.7,-0.18) -- ++(0.55,0) node[right]{\scriptsize$u_1^e$};
+        \draw[disp] (3.5,-0.18)  -- ++(0.55,0) node[right]{\scriptsize$u_2^e$};
+        \draw[->] (0,0.6) -- ++(0.7,0) node[right]{$x$};
+        \draw[->] (0,0.6) -- ++(0,0.5) node[above]{$y$};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \centering
+      \includegraphics[height=2.0cm,keepaspectratio]{../Grafiken/Tetraeder.png}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.4em}
+
+  %% -- Zeile 3: Formeln (gleiche Höhe) --
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \centering
+      \[
+        \begin{pmatrix}f_1^e\\f_2^e\end{pmatrix}
+        =\frac{E^e A^e}{L^e}
+        \begin{pmatrix}1&-1\\-1&1\end{pmatrix}
+        \begin{pmatrix}u_1^e\\u_2^e\end{pmatrix}
+      \]
+      $\underline{f}^e = \underline{\underline{k}}^e\,\underline{u}^e$
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \centering\scriptsize
+      \[
+        \begin{pmatrix}f_1^e\\f_2^e\\\vdots\\f_{30}^e\end{pmatrix}
+        =
+        \begin{pmatrix}
+          K_{11}&K_{12}&\cdots&K_{1,30}\\
+          K_{21}&K_{22}&\cdots&K_{2,30}\\
+          \vdots&\vdots&\ddots&\vdots\\
+          K_{30,1}&\cdots&&K_{30,30}
+        \end{pmatrix}
+        \begin{pmatrix}u_1^e\\u_2^e\\\vdots\\u_{30}^e\end{pmatrix}
+      \]
+      $\underline{f}^e = \underline{\underline{k}}^e\,\underline{u}^e$
+    \end{column}
+  \end{columns}
+
 \end{frame}
 
 % ---------------------------------------------------------------------------

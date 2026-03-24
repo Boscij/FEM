@@ -208,16 +208,16 @@
                   text width=11.5cm, minimum height=1.0cm,
                   align=left, inner sep=7pt, font=\small},
     ]
-    \node[num] (n1) at (-6.6, 0)    {1};
+    \node[num] (n1) at (-6.6, 0)    {S1};
     \node[box] (s1) at (0, 0)       {\textbf{Starke Form} \hfill DGL + Randbedingungen für das mechanische Problem};
 
-    \node[num] (n2) at (-6.6,-1.5)  {2};
+    \node[num] (n2) at (-6.6,-1.5)  {S2};
     \node[box] (s2) at (0,-1.5)     {\textbf{Schwache Form} \hfill mit $\delta u$ multiplizieren, integrieren, partiell integrieren};
 
-    \node[num] (n3) at (-6.6,-3.0)  {3};
+    \node[num] (n3) at (-6.6,-3.0)  {S3};
     \node[box] (s3) at (0,-3.0)     {\textbf{Galerkin-Ansatz} \hfill $u^e = \mathbf{N}\mathbf{u}^e$, \quad $\delta u^e = \mathbf{N}\,\delta\mathbf{u}^e$ \quad einsetzen};
 
-    \node[num] (n4) at (-6.6,-4.5)  {4};
+    \node[num] (n4) at (-6.6,-4.5)  {S4};
     \node[box] (s4) at (0,-4.5)     {\textbf{Integration} \hfill $\mat{k}^e = \displaystyle\int \mathbf{B}^T\mathbf{C}\,\mathbf{B}\,\mathrm{d}\Omega$ \quad (analytisch oder numerisch)};
 
     \draw[arr] (s1.south) -- (s2.north);
@@ -233,11 +233,10 @@
   \small
   Sie können
   \begin{enumerate}
-    \item die starke Form (DGL + RB) eines 1D-Stabproblems aufschreiben und erläutern.
-    \item die starke Form in die \textbf{schwache Form} (Prinzip der virtuellen Arbeit) überführen, indem Sie mit einer Testfunktion $\delta u$ multiplizieren und partiell integrieren.
-    \item den \textbf{Galerkin-Ansatz} anwenden: Ansatz- und Testfunktionen durch Formfunktionen $N_i$ ausdrücken.
-    \item die \textbf{Elementsteifigkeitsmatrix} $\Ke$ und den \textbf{Elementlastvektor} $\mathbf{f}^e$ aus der schwachen Form systematisch herleiten.
-    \item den Zusammenhang zwischen der variationellen Herleitung und der bekannten Matrixsteifigkeitsmethode erklären.
+    \item die starke Form des Gleichgewichts für den Stab herleiten.
+    \item ausgehend von der starken Form die \textbf{schwache Form} herleiten.
+    \item die Gewichtsfunktion $g(x)$ als virtuelle Verschiebung interpretieren und wissen, dass sie an den Stellen mit kinematischen Randbedingungen verschwinden muss.
+    \item zwischen der starken und schwachen Form unterscheiden und die Vorzüge der schwachen Form benennen.
   \end{enumerate}
 \end{frame}
 

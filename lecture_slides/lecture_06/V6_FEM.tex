@@ -201,22 +201,24 @@
 \begin{frame}{Herleitung Elementsteifigkeitsmatrix – Übersicht}
   \centering
   \begin{tikzpicture}[
-      step/.style={
-        rounded corners=6pt,
-        fill=blue!15, draw=blue!50!black,
-        text width=13cm, minimum height=1.1cm,
-        align=left, inner sep=8pt, font=\small
-      },
       arr/.style={-{Latex[length=3mm]}, thick, blue!60!black},
-      num/.style={
-        circle, fill=blue!70!black, text=white,
-        font=\bfseries\small, inner sep=0pt, minimum size=6mm
-      },
+      num/.style={circle, fill=blue!70!black, text=white,
+                  font=\bfseries\small, inner sep=0pt, minimum size=7mm},
+      box/.style={rounded corners=5pt, fill=blue!12, draw=blue!50!black,
+                  text width=11.5cm, minimum height=1.0cm,
+                  align=left, inner sep=7pt, font=\small},
     ]
-    \node[step] (s1) at (0, 0)    {\node[num] at (-5.8,0) {1}; \quad\textbf{Starke Form} \hfill DGL + Randbedingungen für das mechanische Problem};
-    \node[step] (s2) at (0,-1.55) {\node[num] at (-5.8,0) {2}; \quad\textbf{Schwache Form} \hfill mit Testfunktion $\delta u$ multiplizieren, über Gebiet integrieren, partiell integrieren};
-    \node[step] (s3) at (0,-3.10) {\node[num] at (-5.8,0) {3}; \quad\textbf{Galerkin-Ansatz} \hfill Ansatzfunktion $u^e = \mathbf{N}\mathbf{u}^e$ und Gewichtsfunktion $\delta u^e = \mathbf{N}\,\delta\mathbf{u}^e$ einsetzen};
-    \node[step] (s4) at (0,-4.65) {\node[num] at (-5.8,0) {4}; \quad\textbf{Integration} \hfill $\mat{k}^e = \displaystyle\int \mathbf{B}^T\mathbf{C}\,\mathbf{B}\,\mathrm{d}\Omega$ \quad (analytisch oder numerisch)};
+    \node[num] (n1) at (-6.6, 0)    {1};
+    \node[box] (s1) at (0, 0)       {\textbf{Starke Form} \hfill DGL + Randbedingungen für das mechanische Problem};
+
+    \node[num] (n2) at (-6.6,-1.5)  {2};
+    \node[box] (s2) at (0,-1.5)     {\textbf{Schwache Form} \hfill mit $\delta u$ multiplizieren, integrieren, partiell integrieren};
+
+    \node[num] (n3) at (-6.6,-3.0)  {3};
+    \node[box] (s3) at (0,-3.0)     {\textbf{Galerkin-Ansatz} \hfill $u^e = \mathbf{N}\mathbf{u}^e$, \quad $\delta u^e = \mathbf{N}\,\delta\mathbf{u}^e$ \quad einsetzen};
+
+    \node[num] (n4) at (-6.6,-4.5)  {4};
+    \node[box] (s4) at (0,-4.5)     {\textbf{Integration} \hfill $\mat{k}^e = \displaystyle\int \mathbf{B}^T\mathbf{C}\,\mathbf{B}\,\mathrm{d}\Omega$ \quad (analytisch oder numerisch)};
 
     \draw[arr] (s1.south) -- (s2.north);
     \draw[arr] (s2.south) -- (s3.north);

@@ -184,13 +184,12 @@
     \toprule
     & \textbf{Element} & \textbf{Dim.} & \textbf{Knoten} & \textbf{FG / Element} \\
     \midrule
-    \textbf{1} & Stab (einfach)                      & 1D             & 2  & 2  \\[0.3em]
-    \textbf{2} & Stab (allgemeiner)                  & 1D             & 2  & 2  \\[0.3em]
-    \textbf{3} & Seil                                & 1D             & 2  & 2  \\[0.3em]
-    \textbf{4} & Membranelement                      & 2D             & 3  & 6  \\[0.3em]
-    \textbf{5} & Membranelement (vereinfacht)        & 2D\,$\to$\,1D  & 2  & 4  \\[0.3em]
-    \textbf{6} & Isoparametrisches Scheibenelement   & 2D             & 4  & 8  \\[0.3em]
-    \textbf{7} & Tetraederelement (optional)         & 3D             & 10 & 30 \\
+    \textbf{1} & Stab (allgemein)                      & 1D             & 2  & 2  \\[0.3em]
+    \textbf{2} & Seil                                & 1D             & 2  & 2  \\[0.3em]
+    \textbf{3} & Membranelement                      & 2D             & 3  & 6  \\[0.3em]
+    \textbf{4} & Membranelement (vereinfacht)        & 2D\,$\to$\,1D  & 2  & 4  \\[0.3em]
+    \textbf{5} & Isoparametrisches Scheibenelement   & 2D             & 4  & 8  \\[0.3em]
+    \textbf{6} & Tetraederelement (optional)         & 3D             & 10 & 30 \\
     \bottomrule
   \end{tabular}
 \end{frame}
@@ -251,142 +250,18 @@
 \end{frame}
 
 % ---------------------------------------------------------------------------
-% Tafelbild – Starke Form
+% Tafelbilder
 % ---------------------------------------------------------------------------
-\begin{frame}{Tafelbild: Starke Form des Stabproblems}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.45\textwidth}
-      \textbf{Starke Form} (DGL + Randbedingungen)
-      \vspace{0.8em}
-
-      Gleichgewicht im Stab ($0 \le x \le L$):
-      \[
-        -\frac{\dd}{\dd x}\!\left(EA\,\frac{\dd u}{\dd x}\right) = f(x)
-      \]
-
-      \vspace{0.5em}
-      Randbedingungen:
-      \begin{align*}
-        u(0) &= \bar{u} \quad \text{(geometrisch / Dirichlet)}\\
-        EA\,\frac{\dd u}{\dd x}\Big|_{x=L} &= \bar{F} \quad \text{(natürlich / Neumann)}
-      \end{align*}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{tikzpicture}[scale=0.85,
-          force/.style={-{Latex[length=2.5mm]}, thick, red!80!black},
-          support/.style={thick},
-        ]
-        % Stab
-        \draw[very thick] (0,0) rectangle (5,0.6);
-        \node at (2.5,0.3) {$EA = \text{const}$};
-        % Länge
-        \draw[<->] (0,-0.4) -- (5,-0.4) node[midway, below] {$L$};
-        % Einspannung links
-        \draw[support] (0,0) -- (0,0.6);
-        \foreach \y in {0,0.15,...,0.75} {\draw (0,\y) -- (-0.25,\y-0.2);}
-        % Streckenlast
-        \foreach \x in {0.5,1.2,...,4.5} {
-          \draw[force] (\x,0.9) -- (\x,0.65);
-        }
-        \node[red!80!black] at (2.5,1.15) {$f(x)$};
-        % Einzelkraft rechts
-        \draw[force] (5.9,0.3) -- (5.1,0.3) node[midway, above] {$\bar{F}$};
-        % x-Achse
-        \draw[->] (0,-0.9) -- (5.5,-0.9) node[right] {$x$};
-      \end{tikzpicture}
-    \end{column}
-  \end{columns}
+\begin{frame}{Tafelbild: Herleitung starke Form Stab (Mechanik)}
 \end{frame}
 
-% ---------------------------------------------------------------------------
-% Tafelbild – Schwache Form
-% ---------------------------------------------------------------------------
-\begin{frame}{Tafelbild: Von der starken zur schwachen Form}
-  \textbf{Vorgehen:} Multipliziere DGL mit Testfunktion $\delta u$ (virtuell, $\delta u(0)=0$),
-  integriere über das Gebiet und wende partielle Integration an.
-
-  \vspace{0.8em}
-  \begin{block}{Schwache Form (Prinzip der virtuellen Arbeit)}
-    \[
-      \int_0^L EA\,\frac{\dd(\delta u)}{\dd x}\,\frac{\dd u}{\dd x}\,\dd x
-      \;=\;
-      \int_0^L \delta u\,f\,\dd x \;+\; \delta u(L)\,\bar{F}
-    \]
-  \end{block}
-
-  \vspace{0.5em}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-      \textbf{Linke Seite} $\longrightarrow$ innere virtuelle Arbeit\\[0.3em]
-      \hspace{1em}$\displaystyle\int_0^L \delta\varepsilon\cdot\sigma\,\dd x$
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Rechte Seite} $\longrightarrow$ äussere virtuelle Arbeit\\[0.3em]
-      \hspace{1em}Volumenlasten + Randlasten
-    \end{column}
-  \end{columns}
+\begin{frame}{Tafelbild: Herleitung schwache Form Stab (Variationsrechnung)}
 \end{frame}
 
-% ---------------------------------------------------------------------------
-% Tafelbild – Galerkin-Ansatz & Formfunktionen
-% ---------------------------------------------------------------------------
 \begin{frame}{Tafelbild: Galerkin-Ansatz und Formfunktionen}
-  \textbf{Ansatz} auf einem Element $[0, L^e]$: Verschiebung durch Knotenverschiebungen interpolieren
-  \[
-    u^e(x) = N_1(x)\,u_1 + N_2(x)\,u_2 = \mathbf{N}(x)\,\mathbf{u}^e,
-    \qquad
-    \delta u^e = \mathbf{N}(x)\,\delta\mathbf{u}^e
-  \]
-
-  \vspace{0.3em}
-  Lineare Formfunktionen (Stab):
-  \[
-    N_1(x) = 1 - \frac{x}{L^e}, \qquad N_2(x) = \frac{x}{L^e}
-  \]
-
-  \vspace{0.5em}
-  Dehnung:
-  \[
-    \varepsilon^e = \frac{\dd u^e}{\dd x} = \underbrace{\frac{\dd \mathbf{N}}{\dd x}}_{\mathbf{B}}\,\mathbf{u}^e,
-    \qquad
-    \mathbf{B} = \frac{1}{L^e}\begin{bmatrix}-1 & 1\end{bmatrix}
-  \]
-
-  \vspace{0.5em}
-  Einsetzen in die schwache Form liefert:
-  \[
-    \delta(\mathbf{u}^e)^T \underbrace{\int_0^{L^e} \mathbf{B}^T EA\, \mathbf{B}\,\dd x}_{\Ke}\,\mathbf{u}^e
-    = \delta(\mathbf{u}^e)^T\,\mathbf{f}^e
-    \qquad \forall\;\delta\mathbf{u}^e
-  \]
 \end{frame}
 
-% ---------------------------------------------------------------------------
-% Tafelbild – Elementsteifigkeitsmatrix
-% ---------------------------------------------------------------------------
 \begin{frame}{Tafelbild: Elementsteifigkeitsmatrix aus schwacher Form}
-  \begin{block}{Elementsteifigkeitsmatrix $\Ke$ (allgemein)}
-    \[
-      \Ke = \int_0^{L^e} \mathbf{B}^T\, EA\, \mathbf{B}\,\dd x
-    \]
-  \end{block}
-
-  \vspace{0.5em}
-  Auswertung mit $\mathbf{B} = \tfrac{1}{L^e}[-1\;\; 1]$ und $EA = \text{const}$:
-  \[
-    \Ke
-    = \frac{EA}{(L^e)^2}\int_0^{L^e}
-      \begin{bmatrix}-1\\1\end{bmatrix}
-      \begin{bmatrix}-1 & 1\end{bmatrix}
-      \dd x
-    = \frac{EA}{L^e}
-      \begin{bmatrix}\phantom{-}1 & -1\\-1 & \phantom{-}1\end{bmatrix}
-  \]
-
-  \vspace{0.5em}
-  \begin{alertblock}{Ergebnis}
-    Dieselbe Matrix wie aus der Matrixsteifigkeitsmethode — jetzt \textbf{systematisch hergeleitet}.
-  \end{alertblock}
 \end{frame}
 
 \end{document}

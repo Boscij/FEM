@@ -102,84 +102,72 @@
 % ---------------------------------------------------------------------------
 \begin{frame}{Herleitung Elementsteifigkeitsmatrizen}
 
-  %% -- Zeile 1: Eigenschaften --
+  %% -- Zeile 1: Eigenschaften (kompakt) --
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.46\textwidth}
-      \textbf{Stab}
-      \begin{itemize}\small
-        \item 1-D, linear
-        \item 1 FG pro Knoten
-        \item 2 Knoten pro Element
-        \item 2 FG pro Element
-      \end{itemize}
+      \textbf{Stab:}\quad\small 1D \;·\; 2 Knoten \;·\; 2 FG/Element
     \end{column}
     \begin{column}{0.52\textwidth}
-      \textbf{Tetraeder}
-      \begin{itemize}\small
-        \item 3-D, quadratisch
-        \item 3 FG pro Knoten
-        \item 10 Knoten pro Element
-        \item 30 FG pro Element
-      \end{itemize}
+      \textbf{Tetraeder:}\quad\small 3D \;·\; 10 Knoten \;·\; 30 FG/Element
     \end{column}
   \end{columns}
 
-  \vspace{0.4em}
+  \vspace{0.5em}
 
-  %% -- Zeile 2: Skizzen (gleiche Höhe) --
+  %% -- Zeile 2: Skizzen --
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.46\textwidth}
       \centering
-      \begin{tikzpicture}[scale=0.82,
-          force/.style={-{Latex[length=2mm]}, thick},
-          disp/.style={-{Latex[length=2mm]}, thick, green!60!black},
-          nd/.style={circle, fill=blue!70!black, inner sep=2.2pt},
+      \begin{tikzpicture}[scale=0.95,
+          force/.style={-{Latex[length=2.5mm]}, thick},
+          disp/.style={-{Latex[length=2.5mm]}, thick, green!60!black},
+          nd/.style={circle, fill=blue!70!black, inner sep=2.5pt},
         ]
         \draw[very thick] (0,0) -- (3.5,0);
         \node[nd] (n1) at (0,0)   {};
         \node[nd] (n2) at (3.5,0) {};
-        \draw[<->] (0,-0.45) -- (3.5,-0.45) node[midway,below] {$L^e$};
-        \node at (1.75,0.28) {$E^e A^e$};
-        \draw[force, red!80!black] (-0.7,0) -- (n1) node[midway,above]{\color{red!80!black}$f_1^e$};
-        \draw[force, red!80!black] (n2) -- ++(0.7,0) node[midway,above]{\color{red!80!black}$f_2^e$};
-        \draw[disp] (-0.7,-0.18) -- ++(0.55,0) node[right]{\scriptsize$u_1^e$};
-        \draw[disp] (3.5,-0.18)  -- ++(0.55,0) node[right]{\scriptsize$u_2^e$};
+        \draw[<->] (0,-0.5) -- (3.5,-0.5) node[midway,below] {$L^e$};
+        \node at (1.75,0.32) {$E^e A^e$};
+        \draw[force, red!80!black] (-0.8,0) -- (n1) node[midway,above]{\color{red!80!black}$f_1^e$};
+        \draw[force, red!80!black] (n2) -- ++(0.8,0) node[midway,above]{\color{red!80!black}$f_2^e$};
+        \draw[disp] (-0.8,-0.22) -- ++(0.6,0) node[right]{\small$u_1^e$};
+        \draw[disp] (3.5,-0.22)  -- ++(0.6,0) node[right]{\small$u_2^e$};
       \end{tikzpicture}
     \end{column}
     \begin{column}{0.52\textwidth}
       \centering
-      \includegraphics[height=2.0cm,keepaspectratio]{../Grafiken/Tetraeder.png}
+      \includegraphics[height=3.2cm,keepaspectratio]{../Grafiken/Tetraeder.png}
     \end{column}
   \end{columns}
 
-  \vspace{0.4em}
+  \vspace{0.5em}
 
-  %% -- Zeile 3: Formeln (gleiche Höhe) --
+  %% -- Zeile 3: Formeln --
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.46\textwidth}
       \centering
       \[
         \begin{pmatrix}f_1^e\\f_2^e\end{pmatrix}
         =\frac{E^e A^e}{L^e}
-        \begin{pmatrix}1&-1\\-1&1\end{pmatrix}
+        \begin{pmatrix}\phantom{-}1&-1\\-1&\phantom{-}1\end{pmatrix}
         \begin{pmatrix}u_1^e\\u_2^e\end{pmatrix}
       \]
-      $\underline{f}^e = \underline{\underline{k}}^e\,\underline{u}^e$
     \end{column}
     \begin{column}{0.52\textwidth}
-      \centering\scriptsize
+      \centering\small
       \[
-        \begin{pmatrix}f_1^e\\f_2^e\\\vdots\\f_{30}^e\end{pmatrix}
+        \mathbf{f}^e
         =
+        \underbrace{\mat{k}^e}_{\in\,\mathbb{R}^{30\times 30}}
+        \mathbf{u}^e
+        \quad
+        \mat{k}^e =
         \begin{pmatrix}
-          K_{11}&K_{12}&\cdots&K_{1,30}\\
-          K_{21}&K_{22}&\cdots&K_{2,30}\\
-          \vdots&\vdots&\ddots&\vdots\\
-          K_{30,1}&\cdots&&K_{30,30}
+          K_{11}&\cdots&K_{1,30}\\
+          \vdots&\ddots&\vdots\\
+          K_{30,1}&\cdots&K_{30,30}
         \end{pmatrix}
-        \begin{pmatrix}u_1^e\\u_2^e\\\vdots\\u_{30}^e\end{pmatrix}
       \]
-      $\underline{f}^e = \underline{\underline{k}}^e\,\underline{u}^e$
     \end{column}
   \end{columns}
 

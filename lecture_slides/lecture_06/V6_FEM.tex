@@ -67,7 +67,7 @@
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.58\textwidth}
       \Large
-      \textbf{1. FEM nutzen per Software/Abaqus (nicht prüfungsrelevant.)}
+      \textbf{1. FEM nutzen per Software/Abaqus}
 
       \vspace{0.9em}
       \textbf{2. Erklärung/Herleitung FEM}\newline
@@ -100,7 +100,7 @@
 % ---------------------------------------------------------------------------
 % Motivation
 % ---------------------------------------------------------------------------
-\begin{frame}{Herleitung Elementsteifigkeitsmatrizen}
+\begin{frame}{Motivation}
 
   %% -- Zeile 1: Eigenschaften (kompakt) --
   \begin{columns}[T,onlytextwidth]
@@ -178,7 +178,7 @@
 % ---------------------------------------------------------------------------
 % Vorgehen
 % ---------------------------------------------------------------------------
-\begin{frame}{Vorgehen – Herleitung der Elementsteifigkeitsmatrizen}
+\begin{frame}{Vorgehen Vorlesung – Herleitung der Elementsteifigkeitsmatrizen}
   \centering\small
   \begin{tabular}{@{}clccc@{}}
     \toprule
@@ -193,6 +193,35 @@
     \textbf{7} & Tetraederelement (optional)         & 3D             & 10 & 30 \\
     \bottomrule
   \end{tabular}
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Übersicht Herleitung ESM
+% ---------------------------------------------------------------------------
+\begin{frame}{Herleitung Elementsteifigkeitsmatrix – Übersicht}
+  \centering
+  \begin{tikzpicture}[
+      step/.style={
+        rounded corners=6pt,
+        fill=blue!15, draw=blue!50!black,
+        text width=13cm, minimum height=1.1cm,
+        align=left, inner sep=8pt, font=\small
+      },
+      arr/.style={-{Latex[length=3mm]}, thick, blue!60!black},
+      num/.style={
+        circle, fill=blue!70!black, text=white,
+        font=\bfseries\small, inner sep=0pt, minimum size=6mm
+      },
+    ]
+    \node[step] (s1) at (0, 0)    {\node[num] at (-5.8,0) {1}; \quad\textbf{Starke Form} \hfill DGL + Randbedingungen für das mechanische Problem};
+    \node[step] (s2) at (0,-1.55) {\node[num] at (-5.8,0) {2}; \quad\textbf{Schwache Form} \hfill mit Testfunktion $\delta u$ multiplizieren, über Gebiet integrieren, partiell integrieren};
+    \node[step] (s3) at (0,-3.10) {\node[num] at (-5.8,0) {3}; \quad\textbf{Galerkin-Ansatz} \hfill Ansatzfunktion $u^e = \mathbf{N}\mathbf{u}^e$ und Gewichtsfunktion $\delta u^e = \mathbf{N}\,\delta\mathbf{u}^e$ einsetzen};
+    \node[step] (s4) at (0,-4.65) {\node[num] at (-5.8,0) {4}; \quad\textbf{Integration} \hfill $\mat{k}^e = \displaystyle\int \mathbf{B}^T\mathbf{C}\,\mathbf{B}\,\mathrm{d}\Omega$ \quad (analytisch oder numerisch)};
+
+    \draw[arr] (s1.south) -- (s2.north);
+    \draw[arr] (s2.south) -- (s3.north);
+    \draw[arr] (s3.south) -- (s4.north);
+  \end{tikzpicture}
 \end{frame}
 
 % ---------------------------------------------------------------------------

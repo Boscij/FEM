@@ -119,6 +119,10 @@ _output
 *_loesung.ipynb
 *_lsg.ipynb
 
+# Externe Referenzimplementation (nur lokal, niemals pushen)
+content/fem-py-main/
+content/fem-py-main/**
+
 # explicitly track fem_core
 !content/fem_core.py
 exercises/ex_galerkin/ex_galerkin_solution.*

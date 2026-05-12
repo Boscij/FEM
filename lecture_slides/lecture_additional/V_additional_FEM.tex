@@ -1,0 +1,219 @@
+% Finite-Elemente (ZHAW) -- Beamer-Template
+% Zusatzfolien: Dimensionen der Matrizen N, B und k^e
+
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+
+% --- Sprache/Encoding ---
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% --- Mathe & Grafik ---
+\usepackage{amsmath,amssymb,bm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,matrix,fit,backgrounds}
+
+% --- Tabellen/Listen ---
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{makecell}
+
+% --- Boxen ---
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% Farbig hinterlegen
+\newcommand{\hlg}[1]{\text{\colorbox{green!22}{\ensuremath{#1}}}}
+\newcommand{\hlb}[1]{\text{\colorbox{blue!15}{\ensuremath{#1}}}}
+\newcommand{\hlo}[1]{\text{\colorbox{orange!22}{\ensuremath{#1}}}}
+
+% --- Theme/Look ---
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.5ex,dp=1.1ex,left]{author in head/foot}\hspace{1em}\insertshortauthor\hspace{1em}--\hspace{1em}\insertshorttitle\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.5ex,dp=1.1ex,right]{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace{1em}\end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% --- Metadaten ---
+\title[FEM Zusatz]{Finite Elemente Methode}
+\subtitle{Zusatzfolien: Dimensionen der Element-Matrizen}
+\author[ZHAW]{Sebastian Domaschke}
+\institute[ZHAW]{Zürcher Hochschule für Angewandte Wissenschaften (ZHAW)}
+\date{Frühlingssemester 2026}
+\titlegraphic{\includegraphics[height=1.2cm]{../Grafiken/logo.pdf}}
+
+% --- Makros ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\mat}[1]{\underline{\underline{#1}}}
+\newcommand{\Nmat}{\mat{N}}
+\newcommand{\Bmat}{\mat{B}}
+\newcommand{\Emat}{\mat{E}}
+\newcommand{\ke}{\mat{k}^{e}}
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+% Titelfolie
+% ---------------------------------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Allgemein: Dimensionen aus den drei Beziehungen
+% ---------------------------------------------------------------------------
+\begin{frame}{Dimensionen aus den drei Grundbeziehungen}
+  \footnotesize
+  In jeder Beziehung muss das Matrix-Vektor-Produkt aufgehen.
+  Daraus folgen die Dimensionen von $\Nmat$, $\Bmat$ und $\ke$.
+
+  \vspace{0.3em}
+  \begin{tcolorbox}[colback=blue!6, colframe=blue!70!black, boxrule=0.8pt,
+      left=6pt, right=6pt, top=2pt, bottom=2pt]
+    \textbf{1.\ Verschiebungsfeld} $\widetilde{\bm{u}} = \Nmat\,\bm{v}^e$:
+    \;\;
+    $\underbrace{\widetilde{\bm{u}}}_{\hlo{\text{Versch.-Komp.}}}
+      = \Nmat \cdot \underbrace{\bm{v}^e}_{\hlb{\text{Element-FG}}}$
+    \;\;$\Longrightarrow$\;\;
+    $\Nmat:\;\hlo{\text{Versch.-Komp.}} \times \hlb{\text{Element-FG}}$
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[colback=green!6, colframe=green!55!black, boxrule=0.8pt,
+      left=6pt, right=6pt, top=2pt, bottom=2pt]
+    \textbf{2.\ Verzerrungsfeld} $\bm{\varepsilon} = \Bmat\,\bm{v}^e$:
+    \;\;
+    $\underbrace{\bm{\varepsilon}}_{\hlg{\text{Dehnungs-Komp.}}}
+      = \Bmat \cdot \underbrace{\bm{v}^e}_{\hlb{\text{Element-FG}}}$
+    \;\;$\Longrightarrow$\;\;
+    $\Bmat:\;\hlg{\text{Dehnungs-Komp.}} \times \hlb{\text{Element-FG}}$
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[colback=orange!6, colframe=orange!80!black, boxrule=0.8pt,
+      left=6pt, right=6pt, top=2pt, bottom=2pt]
+    \textbf{3.\ Element-Steifigkeit} $\ke = \int_{\Omega^e}\Bmat^{\!\top}\Emat\,\Bmat\,\dd\Omega$:
+    \;\;
+    $\underbrace{\Bmat^{\!\top}}_{\hlb{\text{FG}}\times\hlg{\text{Deh}}}
+      \underbrace{\Emat}_{\hlg{\text{Deh}\times\text{Deh}}}
+      \underbrace{\Bmat}_{\hlg{\text{Deh}}\times\hlb{\text{FG}}}$
+    \;\;$\Longrightarrow$\;\;
+    $\ke:\;\hlb{\text{Element-FG}}\times\hlb{\text{Element-FG}}$
+    (quadratisch)
+  \end{tcolorbox}
+
+  \vspace{0.2em}
+  \centering
+  \scriptsize
+  \textbf{Element-FG} = Anzahl Knoten-Verschiebungen je Element = Länge von $\bm{v}^e$
+\end{frame}
+
+% ---------------------------------------------------------------------------
+% Drei Beispiele - Sketches + Tables
+% ---------------------------------------------------------------------------
+\begin{frame}{Drei Beispiele: Stab, Membran, iso.-4 Knoten}
+  \footnotesize
+
+  \begin{columns}[T,onlytextwidth]
+
+    % ============================= STAB =============================
+    \begin{column}{0.32\textwidth}
+      \centering
+      \begin{minipage}[c][1.7cm][c]{\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=0.85]
+          \draw[line width=1.5pt] (0,0) -- (3.0,0);
+          \fill (0,0)   circle (3pt) node[below=2pt] {\scriptsize $1$};
+          \fill (3.0,0) circle (3pt) node[below=2pt] {\scriptsize $2$};
+          \node at (1.5,0.35) {\scriptsize \textbf{Stab}};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \vspace{0.3em}
+      \renewcommand{\arraystretch}{1.05}
+      \begin{tabular}{@{}ll@{}}
+        \toprule
+        Knoten              & $2$ \\
+        Verschiebung/Knoten & $u_i$ (axial) \\
+        Element-FG ($\bm{v}^e$) & \textbf{2} \\
+        Dehnungs-Komp.\ ($\bm{\varepsilon}$) & \makecell[l]{$\varepsilon_{xx}$\\\strut} \\
+        \midrule
+        $\Nmat$  & $1 \times 2$ \\
+        $\Bmat$  & $1 \times 2$ \\
+        $\ke$    & $\mathbf{2 \times 2}$ \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+
+    % ============================= MEMBRAN =============================
+    \begin{column}{0.32\textwidth}
+      \centering
+      \begin{minipage}[c][1.7cm][c]{\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=0.7]
+          \draw[line width=1.2pt] (0,0) -- (2.6,0) -- (1.3,1.7) -- cycle;
+          \fill (0,0)   circle (3pt) node[below left] {\scriptsize $1$};
+          \fill (2.6,0) circle (3pt) node[below right] {\scriptsize $2$};
+          \fill (1.3,1.7) circle (3pt) node[above] {\scriptsize $3$};
+          \node at (1.3,0.55) {\scriptsize \textbf{Membran}};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \vspace{0.3em}
+      \renewcommand{\arraystretch}{1.05}
+      \begin{tabular}{@{}ll@{}}
+        \toprule
+        Knoten              & $3$ \\
+        Verschiebung/Knoten & $w_i$ \\
+        Element-FG ($\bm{v}^e$) & \textbf{3} \\
+        Dehnungs-Komp.\ ($\bm{\varepsilon}$) & \makecell[l]{$\partial w/\partial x$\\$\partial w/\partial y$} \\
+        \midrule
+        $\Nmat$  & $1 \times 3$ \\
+        $\Bmat$  & $2 \times 3$ \\
+        $\ke$    & $\mathbf{3 \times 3}$ \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+
+    % ============================= iso.-4 Knoten =============================
+    \begin{column}{0.32\textwidth}
+      \centering
+      \begin{minipage}[c][1.7cm][c]{\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=0.75]
+          \draw[line width=1.2pt] (0,0) rectangle (2.6,1.7);
+          \fill (0,0)     circle (3pt) node[below left]  {\scriptsize $1$};
+          \fill (2.6,0)   circle (3pt) node[below right] {\scriptsize $2$};
+          \fill (2.6,1.7) circle (3pt) node[above right] {\scriptsize $3$};
+          \fill (0,1.7)   circle (3pt) node[above left]  {\scriptsize $4$};
+          \node at (1.3,0.85) {\scriptsize \textbf{iso.-4 Kn.}};
+        \end{tikzpicture}
+      \end{minipage}
+
+      \vspace{0.3em}
+      \renewcommand{\arraystretch}{1.05}
+      \begin{tabular}{@{}ll@{}}
+        \toprule
+        Knoten              & $4$ \\
+        Verschiebung/Knoten & $u_i,\;v_i$ \\
+        Element-FG ($\bm{v}^e$) & \textbf{8} \\
+        Dehnungs-Komp.\ ($\bm{\varepsilon}$) & \makecell[l]{$\varepsilon_{xx},\;\varepsilon_{yy}$\\$\gamma_{xy}$} \\
+        \midrule
+        $\Nmat$  & $2 \times 8$ \\
+        $\Bmat$  & $3 \times 8$ \\
+        $\ke$    & $\mathbf{8 \times 8}$ \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

@@ -383,7 +383,7 @@ $\mathbf{F}=\underline{\underline{K}}\mathbf{U}$
 \centering
 $\mathbf{F}=\underline{\underline{K}}\mathbf{U}$
 
-\vspace{0.2em}
+\vspace{0.05em}
 
 \centering
 \begin{tikzpicture}[
@@ -394,8 +394,8 @@ $\mathbf{F}=\underline{\underline{K}}\mathbf{U}$
 ]
   % --- Permutierte / blockierte Darstellung ---
   \matrix (Fp) [matrix of math nodes, nodes in empty cells,
-    row sep=0.45ex, column sep=0.6ex,
-    nodes={inner sep=1.0pt, minimum height=1.45ex, minimum width=1.6em},
+    row sep=0.22ex, column sep=0.6ex,
+    nodes={inner sep=0.8pt, minimum height=1.2ex, minimum width=1.6em},
     left delimiter=(, right delimiter=)
   ]{
     0 \\
@@ -411,8 +411,8 @@ $\mathbf{F}=\underline{\underline{K}}\mathbf{U}$
   \node (eq2) [right=0.8em of Fp] {$=$};
 
   \matrix (Kp) [right=1.0em of eq2, matrix of math nodes, nodes in empty cells,
-    row sep=0.45ex, column sep=0.55ex,
-    nodes={inner sep=1.0pt, minimum height=1.45ex, minimum width=1.75em},
+    row sep=0.22ex, column sep=0.45ex,
+    nodes={inner sep=0.8pt, minimum height=1.2ex, minimum width=1.6em},
     left delimiter=(, right delimiter=)
   ]{
     K_{33} \& K_{35} \& K_{36} \& K_{37} \& K_{38} \& K_{31} \& K_{32} \& K_{34} \\
@@ -432,8 +432,8 @@ $\mathbf{F}=\underline{\underline{K}}\mathbf{U}$
   \draw[green!60!black,  line width=0.8pt] (Kp-6-6.north west) rectangle (Kp-8-8.south east);
 
   \matrix (Up) [right=2.0em of Kp, matrix of math nodes, nodes in empty cells,
-    row sep=0.45ex, column sep=0.6ex,
-    nodes={inner sep=1.0pt, minimum height=1.45ex, minimum width=1.6em},
+    row sep=0.22ex, column sep=0.6ex,
+    nodes={inner sep=0.8pt, minimum height=1.2ex, minimum width=1.6em},
     left delimiter=(, right delimiter=)
   ]{
     U_3 \\
@@ -457,7 +457,7 @@ $\mathbf{F}=\underline{\underline{K}}\mathbf{U}$
   \end{pgfonlayer}
 \end{tikzpicture}
 
-\vspace{0.3em}
+\vspace{0.1em}
 
 $\displaystyle \begin{pmatrix}\mathbf{F}_F\\ \mathbf{F}_U\end{pmatrix}=
 \begin{pmatrix}\underline{\underline{K}}_{FF} & \underline{\underline{K}}_{FU}\\ \underline{\underline{K}}_{UF} & \underline{\underline{K}}_{UU}\end{pmatrix}

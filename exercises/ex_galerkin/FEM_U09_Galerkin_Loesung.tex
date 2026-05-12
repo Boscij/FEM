@@ -56,7 +56,6 @@
 \bigskip
 \begin{minipage}[t]{0.55\textwidth}
   \textbf{\Huge FE-Grundlagen}\\[.4ex]
-  Sebastian Domaschke, mailto: \href{mailto:domh@zhaw.ch}{domh@zhaw.ch}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.42\textwidth}
@@ -204,9 +203,9 @@ Praktische Form:
 \[
 u(x)=\bar u_L+c_1(x-L)+c_2(x^2-L^2).
 \]
-Wähle gemäss Galerkin Testfunktionen aus dem selben Ansatzraum:
+Wähle gemäss Galerkin Testfunktionen aus dem selben Ansatzraum (konsistent zum Ansatz: $\delta c_1$ zum linearen, $\delta c_2$ zum quadratischen Term):
 \[
-g_u(x)=\delta c_0(x-L)+\delta c_1(x^2-L^2).
+g_u(x)=\delta c_1(x-L)+\delta c_2(x^2-L^2).
 \]
 Ableitungen:
 \[
@@ -217,49 +216,49 @@ u'(x)=c_1+2c_2x.
 \textbf{Schwache Form auswerten (Schritt für Schritt):} Setze
 \[
 u'(x)=c_1+2c_2x,\qquad
-g_u'(x)=\delta c_0+2\delta c_1x,\qquad
-g_u(0)=-\delta c_0L-\delta c_1L^2.
+g_u'(x)=\delta c_1+2\delta c_2x,\qquad
+g_u(0)=-\delta c_1L-\delta c_2L^2.
 \]
 
 Einsetzen in \eqref{eqn:Weak} ergibt (nach Kürzen von $A$):
 \[
-0=-E\!\int_0^L(\delta c_0+2\delta c_1x)(c_1+2c_2x)\,\dd x
+0=-E\!\int_0^L(\delta c_1+2\delta c_2x)(c_1+2c_2x)\,\dd x
  -\,g_u(0)\,\bar t_0
- +\,\nu\!\int_0^L(\delta c_0(x-L)+\delta c_1(x^2-L^2))x^2\,\dd x.
+ +\,\nu\!\int_0^L(\delta c_1(x-L)+\delta c_2(x^2-L^2))x^2\,\dd x.
 \]
 
 \textbf{Steifigkeitsterm:}
 \[
--E\!\int_0^L(\delta c_0+2\delta c_1x)(c_1+2c_2x)\,\dd x
-=-E\!\int_0^L\!\Bigl(\delta c_0c_1+2\delta c_0c_2x+2\delta c_1c_1x+4\delta c_1c_2x^2\Bigr)\dd x
+-E\!\int_0^L(\delta c_1+2\delta c_2x)(c_1+2c_2x)\,\dd x
+=-E\!\int_0^L\!\Bigl(\delta c_1c_1+2\delta c_1c_2x+2\delta c_2c_1x+4\delta c_2c_2x^2\Bigr)\dd x
 \]
 \[
-=-E\Bigl(\delta c_0c_1L+\delta c_0c_2L^2+\delta c_1c_1L^2+\frac{4}{3}\delta c_1c_2L^3\Bigr).
+=-E\Bigl(\delta c_1c_1L+\delta c_1c_2L^2+\delta c_2c_1L^2+\frac{4}{3}\delta c_2c_2L^3\Bigr).
 \]
 
 \textbf{Randterm:}
 \[
--g_u(0)\bar t_0=(\delta c_0L+\delta c_1L^2)\bar t_0.
+-g_u(0)\bar t_0=(\delta c_1L+\delta c_2L^2)\bar t_0.
 \]
 
 \textbf{Lastterm:}
 \[
-\nu\!\int_0^L(\delta c_0(x-L)+\delta c_1(x^2-L^2))x^2\,\dd x
-=\nu\!\int_0^L\!\Bigl(\delta c_0(x^3-Lx^2)+\delta c_1(x^4-L^2x^2)\Bigr)\dd x
+\nu\!\int_0^L(\delta c_1(x-L)+\delta c_2(x^2-L^2))x^2\,\dd x
+=\nu\!\int_0^L\!\Bigl(\delta c_1(x^3-Lx^2)+\delta c_2(x^4-L^2x^2)\Bigr)\dd x
 \]
 \[
-=\nu\Bigl(\delta c_0\bigl(\tfrac{L^4}{4}-\tfrac{L^4}{3}\bigr)
-  \delta c_1\bigl(\tfrac{L^5}{5}-\tfrac{L^5}{3}\bigr)\Bigr)
-=-\nu\Bigl(\delta c_0\frac{L^4}{12}+\delta c_1\frac{2}{15}L^5\Bigr).
+=\nu\Bigl(\delta c_1\bigl(\tfrac{L^4}{4}-\tfrac{L^4}{3}\bigr)
+  +\delta c_2\bigl(\tfrac{L^5}{5}-\tfrac{L^5}{3}\bigr)\Bigr)
+=-\nu\Bigl(\delta c_1\frac{L^4}{12}+\delta c_2\frac{2}{15}L^5\Bigr).
 \]
 
 Zusammen:
 \[
-0=\delta c_0\Bigl(-E(c_1L+c_2L^2)+L\bar t_0-\nu\frac{L^4}{12}\Bigr)
-\;+\;\delta c_1\Bigl(-E\!\left(c_1L^2+\frac{4}{3}c_2L^3\right)+L^2\bar t_0-\nu\frac{2}{15}L^5\Bigr).
+0=\delta c_1\Bigl(-E(c_1L+c_2L^2)+L\bar t_0-\nu\frac{L^4}{12}\Bigr)
+\;+\;\delta c_2\Bigl(-E\!\left(c_1L^2+\frac{4}{3}c_2L^3\right)+L^2\bar t_0-\nu\frac{2}{15}L^5\Bigr).
 \]
 
-Da $\delta c_0$ und $\delta c_1$ unabhängig sind, folgen die zwei Gleichungen (jeweils durch $L$ bzw.\ $L^2$ gekürzt):
+Da $\delta c_1$ und $\delta c_2$ unabhängig sind, folgen die zwei Gleichungen (jeweils durch $L$ bzw.\ $L^2$ gekürzt):
 \[
 E(c_1+Lc_2)=\bar t_0-\nu\frac{L^3}{12},\qquad
 E\!\left(c_1+\frac{4}{3}Lc_2\right)=\bar t_0-\nu\frac{2}{15}L^3.
@@ -493,13 +492,23 @@ Damit verbessert der quadratische Ansatz die Spannung sichtbar, der trigonometri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{enumerate}[label={},leftmargin=*]
-\item[\circled{1}] \textbf{Für welche Gewichtungsfunktionen $g$ erfüllt $\hat u$ die schwache Form?}\\
+\item[\circled{1}] \textbf{Durch welche Massnahmen könnte die Näherung verbessert werden?}\\
+Ansatzraum erweitern (mehr Freiheitsgrade), oder stückweise Ansatzfunktionen (klassische FEM), also $p$-, $h$- oder $hp$-Verfeinerung.
+
+\item[\circled{2}] \textbf{Wie konkret vorgehen?}\\
+Entweder
+\begin{itemize}
+  \item in FEM-Software Element mit  höherem Polynomgrad wählen (p-Verfeinerung) oder
+  \item Stab in meherere Elemente zerlegen, also ein feineres Netz nutzen (h-Verfeinerung).
+\end{itemize}
+
+\item[\circled{3}] \textbf{Für welche Gewichtungsfunktionen $g$ erfüllt $\hat u$ die schwache Form?}\\
 Für alle genügend glatten, verträglichen Gewichtungsfunktionen, die die essentielle RB respektieren:
 \[
 \boxed{g \text{ ist stetig, stückweise differenzierbar und erfüllt } g(L)=0.}
 \]
 
-\item[\circled{2}] \textbf{Für welche Gewichtungsfunktionen $g_u$ erfüllen die Näherungen aus Teil I die schwache Form?}\\
+\item[\circled{4}] \textbf{Für welche Gewichtungsfunktionen $g_u$ erfüllen die Näherungen aus Teil I die schwache Form?}\\
 Jeweils nur für $g_u$ aus dem gewählten Testraum:
 \[
 \boxed{\text{linear: } g_u(x)=\alpha\,(x-L)},
@@ -509,16 +518,6 @@ Jeweils nur für $g_u$ aus dem gewählten Testraum:
 \[
 \boxed{\text{trig.: } g_u(x)=\alpha\left(\sin\!\left(\tfrac{x}{L}\right)-\sin(1)\right)}.
 \]
-
-\item[\circled{3}] \textbf{Durch welche Massnahmen könnte die Näherung verbessert werden?}\\
-Ansatzraum erweitern (mehr Freiheitsgrade), oder stückweise Ansatzfunktionen (klassische FEM), also $p$-, $h$- oder $hp$-Verfeinerung.
-
-\item[\circled{4}] \textbf{Wie konkret vorgehen?}\\
-Entweder 
-\begin{itemize}
-  \item in FEM-Software Element mit  höherem Polynomgrad wählen (p-Verfeinerung) oder
-  \item Stab in meherere Elemente zerlegen, also ein feineres Netz nutzen (h-Verfeinerung).
-\end{itemize}
 
 \end{enumerate}
 

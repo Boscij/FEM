@@ -118,7 +118,6 @@
 \bigskip
 \begin{minipage}[t]{0.55\textwidth}
   \textbf{\Huge FE-Grundlagen}\\[.4ex]
-  Sebastian Domaschke, mailto: \email{domh@zhaw.ch}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.42\textwidth}
@@ -139,7 +138,7 @@ In dieser Übung bestimmen Sie mit der Galerkin-Methode Näherungslösungen für
 
 \section*{Stab mit Linienlast}
 
-Der Stab der Länge~$L$ ist wie abgebildet rechtsseitig eingespannt mit einer vorgegegebenen Verschiebung~$\bar{u}_L \neq 0$.
+Der Stab der Länge~$L$ ist wie abgebildet am rechten Ende mit einer vorgegebenen Verschiebung $\bar{u}_L$ eingespannt.
 Sowohl Querschnitt~$A$ als auch E-Modul~$E$ seien konstant.
 Über der Stab\-länge verteilt wirkt die axiale Linienlast $n(x)=\nu\,A\,x^2$ und zusätzlich links die Zugspannung~$\bar{t}_0$.
 Die schwache Form des Gleichgewichts ist in~\eqref{eqn:Weak} gegeben.
@@ -176,7 +175,7 @@ Führen Sie die folgenden 6 Schritte aus, um eine erste Näherungslösung zu bes
     \begin{equation}
        \textcolor{Green}{g_u(x) = } \label{eqn:Test}
     \end{equation}
-  \item Werten Sie die \emph{Verschiebungsrandbedingung} aus um die Ansatzfunktion \eqref{eqn:Trial} zu vereinfachen
+  \item Arbeiten Sie die \emph{Verschiebungsrandbedingung} in die Ansatzfunktion \eqref{eqn:Trial} ein
     \begin{align}
       \qquad = u(L) = \qquad\qquad & \Rightarrow \qquad &\Rightarrow \quad u(x) =  \label{eqn:TrialSimple}
     \end{align}
@@ -195,6 +194,7 @@ Führen Sie die folgenden 6 Schritte aus, um eine erste Näherungslösung zu bes
    \end{equation}\vspace{4\baselineskip}
 \end{enumerate}
 
+\newpage
 \paragraph{Teil 1b) Quadratischer Ansatz}
 Wiederholen Sie Teil 1a) mit einem quadratischen Ansatz
 \begin{equation}\label{eqn:TrialQuad}
@@ -242,10 +242,10 @@ Die analytische Lösung zu~\eqref{eqn:Weak} lautet
 
 \subsubsection*{Teil III: Theoretische Diskussion}
 \begin{enumerate}[label=\protect\circled{\arabic*}]
-  \item Für welche Gewichtungsfunktionen $\textcolor{Green}{g_{\hat{u}}(x)}$ erfüllt die Lösung~\eqref{eqn:Solution} die schwache Form des Gleichgewichts~\eqref{eqn:Weak}?\vspace{3\baselineskip}
-  \item Für welche Gewichtungsfunktionen $\textcolor{Green}{g_u(x)}$ erfüllen Ihre Näherungslösungen aus Teil 1a)--1c) die schwache Form des Gleichgewichts~\eqref{eqn:Weak}?\vspace{3\baselineskip}
   \item Durch welche Massnahmen könnte die Näherungslösung verbessert werden? \vspace{3\baselineskip}
   \item Wie müssten Sie konkret in einer FEM-Software vorgehen, um die Näherungslösung zu verbessern? \vspace{3\baselineskip}
+  \item Für welche Gewichtungsfunktionen $\textcolor{Green}{g_{\hat{u}}(x)}$ erfüllt die Lösung~\eqref{eqn:Solution} die schwache Form des Gleichgewichts~\eqref{eqn:Weak}?\vspace{3\baselineskip}
+  \item Für welche Gewichtungsfunktionen $\textcolor{Green}{g_u(x)}$ erfüllen Ihre Näherungslösungen aus Teil 1a)--1c) die schwache Form des Gleichgewichts~\eqref{eqn:Weak}?\vspace{3\baselineskip}
 \end{enumerate}
 
 

@@ -64,7 +64,7 @@ Erweiterung der Matrixsteifigkeitsmethode auf **Balkenelemente**: drei Freiheits
 ## Kapitel 3 – FEM mit 2D Elementen
 
 ### Notebook 6: Triangulare Membranelemente
-Erster Schritt in 2D: das **lineare Dreieckselement (CST)** für eine vorgespannte Membran unter Druck. Pro Knoten nur **ein Freiheitsgrad** (Auslenkung $w$). Wir leiten Formfunktionen $N_i(x,y)$ direkt her, bauen $\underline{\underline{B}}$ und $\underline{\underline{K}}^e$ auf und vergleichen das FEM-Ergebnis mit der analytischen Fourier-Lösung für eine Rechteck-Membran. Zusatzaufgabe: E-förmige Membran mit Polygon-Vernetzung.
+Erster Schritt in 2D: das **lineare Dreieckselement** für eine vorgespannte Membran unter Druck. Pro Knoten nur **ein Freiheitsgrad** (Auslenkung $w$). Wir leiten Formfunktionen $N_i(x,y)$ direkt her, bauen $\underline{\underline{B}}$ und $\underline{\underline{K}}^e$ auf und vergleichen das FEM-Ergebnis mit der analytischen Fourier-Lösung für eine Rechteck-Membran. Zusatzaufgabe: E-förmige Membran mit Polygon-Vernetzung.
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=06_Membran.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/06_Membran.ipynb)
@@ -80,7 +80,7 @@ Erster Schritt in 2D: das **lineare Dreieckselement (CST)** für eine vorgespann
 ## Kapitel 4 – Ausblick: FEM mit 3D Elementen
 
 ### Notebook 8: 10-Knoten-Tetraederelement (T10)
-Erweiterung in 3D mit dem **quadratischen 10-Knoten-Tetraederelement**: 4 Eckknoten + 6 Mid-Edge-Knoten. Volle $6\times 6$ Konstitutivmatrix mit Lamé-Konstanten, 5-Punkt-Gauss-Integration auf dem Tetraeder, $\underline{\underline{K}}^e$ ist $30\times 30$. Beispiel: 3D-Kragarm-Block mit Stress-Visualisierung. T10 ist – anders als Q4 – **frei von Shear-Locking**.
+Erweiterung in 3D mit dem **quadratischen 10-Knoten-Tetraederelement**: 4 Eckknoten + 6 Mid-Edge-Knoten. Volle $6\times 6$ Konstitutivmatrix mit Lamé-Konstanten, 5-Punkt-Gauss-Integration auf dem Tetraeder, $\underline{\underline{K}}^e$ ist $30\times 30$. Beispiel: 3D-Kragarm-Block mit Stress-Visualisierung. 
 
 [![Open in JupyterLite](https://img.shields.io/badge/Open%20in-JupyterLite-blue)](https://Boscij.github.io/FEM/lab/index.html?path=08_Tetraeder_10_Knoten.ipynb)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Boscij/FEM/blob/main/content/08_Tetraeder_10_Knoten.ipynb)
